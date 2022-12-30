@@ -44,6 +44,7 @@
             this.btnMedium.TabIndex = 3;
             this.btnMedium.Text = "Medium";
             this.btnMedium.UseVisualStyleBackColor = true;
+            this.btnMedium.Click += new System.EventHandler(this.btnMedium_Click);
             // 
             // btnEasy
             // 
@@ -54,6 +55,7 @@
             this.btnEasy.TabIndex = 2;
             this.btnEasy.Text = "Easy";
             this.btnEasy.UseVisualStyleBackColor = true;
+            this.btnEasy.Click += new System.EventHandler(this.btnEasy_Click);
             // 
             // btnMenu
             // 
@@ -64,6 +66,7 @@
             this.btnMenu.TabIndex = 5;
             this.btnMenu.Text = "Back To Menu";
             this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // btnHard
             // 
@@ -74,6 +77,7 @@
             this.btnHard.TabIndex = 4;
             this.btnHard.Text = "Hard";
             this.btnHard.UseVisualStyleBackColor = true;
+            this.btnHard.Click += new System.EventHandler(this.btnHard_Click);
             // 
             // label1
             // 
@@ -89,7 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1364, 691);
+            this.ClientSize = new System.Drawing.Size(1362, 697);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.btnHard);

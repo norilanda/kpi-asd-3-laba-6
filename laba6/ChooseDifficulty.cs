@@ -12,9 +12,32 @@ namespace laba6
 {
     public partial class ChooseDifficulty : Form
     {
-        public ChooseDifficulty()
+        Form1 mainForm;
+        public ChooseDifficulty(Form1 mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            mainForm.Show();
+            this.Close();
+        }
+
+        private void btnEasy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMedium_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHard_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
