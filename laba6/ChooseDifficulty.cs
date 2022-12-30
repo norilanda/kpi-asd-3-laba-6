@@ -24,20 +24,26 @@ namespace laba6
             mainForm.Show();
             this.Close();
         }
+        private void InitGameForm(int difficulty)
+        {
+            Game gameForm = new Game(difficulty);
+            gameForm.Show();
+            this.Hide();
+        }
 
         private void btnEasy_Click(object sender, EventArgs e)
         {
-
+            InitGameForm(0);
         }
 
         private void btnMedium_Click(object sender, EventArgs e)
         {
-
+            InitGameForm(1);
         }
 
         private void btnHard_Click(object sender, EventArgs e)
         {
-
+            InitGameForm(2);
         }
     }
 }
