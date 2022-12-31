@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GameAlgo;
 
 namespace laba6
 {
@@ -15,6 +16,7 @@ namespace laba6
         public Game(int difficulty)
         {
             InitializeComponent();
+            GameAlgorithm gameAlgo = new GameAlgorithm(difficulty);
         }
     }
 }

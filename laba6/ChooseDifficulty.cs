@@ -21,7 +21,7 @@ namespace laba6
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            mainForm.Show();
+           //mainForm.Show();
             this.Close();
         }
         private void InitGameForm(int difficulty)
