@@ -26,7 +26,7 @@ namespace laba6
         }
         private void InitGameForm(int difficulty)
         {
-            Game gameForm = new Game(difficulty);
+            Game gameForm = new Game(mainForm, difficulty);
             gameForm.Show();
             this.Hide();
         }
