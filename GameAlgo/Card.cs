@@ -11,7 +11,7 @@ namespace GameAlgo
         public enum Rank
         {
             r2, r3, r4, r5, r6, r7, r8, r9, r10,
-            J, Q, K,
+            J, Q, K, Ace,
             Joker
         }
         public enum Suit
@@ -23,6 +23,8 @@ namespace GameAlgo
         }
         Rank _cardRank;
         Suit _cardSuit;
+        public Rank CardRank => _cardRank;
+        public Suit CardSuit => _cardSuit;
         public Card(Suit s, Rank r)
         {
             _cardSuit = s;
@@ -38,6 +40,8 @@ namespace GameAlgo
                 for (int rank = 0; rank < RANK_NUM; rank++)
                     deck.Add(new Card((Suit)suit, (Rank)rank));
             }
+            deck.Add(new Card(Suit.spades, Rank.Joker));
+            deck.Add(new Card(Suit.clubs, Rank.Joker));
             return deck;
         }
     }
