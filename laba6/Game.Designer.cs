@@ -54,6 +54,7 @@
             this.player1_armour = new System.Windows.Forms.PictureBox();
             this.player1_weapon = new System.Windows.Forms.PictureBox();
             this.hand1_card8 = new System.Windows.Forms.PictureBox();
+            this.btnPlayCards = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card4)).BeginInit();
@@ -83,6 +84,7 @@
             // 
             // btnExit
             // 
+            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnExit.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnExit.Location = new System.Drawing.Point(1708, 12);
             this.btnExit.Name = "btnExit";
@@ -95,63 +97,83 @@
             // hand1_card1
             // 
             this.hand1_card1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card1.Location = new System.Drawing.Point(60, 772);
             this.hand1_card1.Name = "hand1_card1";
-            this.hand1_card1.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card1.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card1.Size = new System.Drawing.Size(131, 188);
             this.hand1_card1.TabIndex = 1;
             this.hand1_card1.TabStop = false;
+            this.hand1_card1.Click += new System.EventHandler(this.hand1_card1_Click);
             // 
             // hand1_card2
             // 
             this.hand1_card2.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card2.Location = new System.Drawing.Point(219, 772);
             this.hand1_card2.Name = "hand1_card2";
-            this.hand1_card2.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card2.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card2.Size = new System.Drawing.Size(131, 188);
             this.hand1_card2.TabIndex = 2;
             this.hand1_card2.TabStop = false;
+            this.hand1_card2.Click += new System.EventHandler(this.hand1_card2_Click);
             // 
             // hand1_card4
             // 
             this.hand1_card4.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card4.Location = new System.Drawing.Point(543, 772);
             this.hand1_card4.Name = "hand1_card4";
-            this.hand1_card4.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card4.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card4.Size = new System.Drawing.Size(131, 188);
             this.hand1_card4.TabIndex = 4;
             this.hand1_card4.TabStop = false;
+            this.hand1_card4.Click += new System.EventHandler(this.hand1_card4_Click);
             // 
             // hand1_card3
             // 
             this.hand1_card3.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card3.Location = new System.Drawing.Point(384, 772);
             this.hand1_card3.Name = "hand1_card3";
-            this.hand1_card3.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card3.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card3.Size = new System.Drawing.Size(131, 188);
             this.hand1_card3.TabIndex = 3;
             this.hand1_card3.TabStop = false;
+            this.hand1_card3.Click += new System.EventHandler(this.hand1_card3_Click);
             // 
             // hand1_card6
             // 
             this.hand1_card6.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card6.Location = new System.Drawing.Point(872, 772);
             this.hand1_card6.Name = "hand1_card6";
-            this.hand1_card6.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card6.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card6.Size = new System.Drawing.Size(131, 188);
             this.hand1_card6.TabIndex = 6;
             this.hand1_card6.TabStop = false;
+            this.hand1_card6.Click += new System.EventHandler(this.hand1_card6_Click);
             // 
             // hand1_card5
             // 
             this.hand1_card5.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card5.Location = new System.Drawing.Point(708, 772);
             this.hand1_card5.Name = "hand1_card5";
-            this.hand1_card5.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card5.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card5.Size = new System.Drawing.Size(131, 188);
             this.hand1_card5.TabIndex = 5;
             this.hand1_card5.TabStop = false;
+            this.hand1_card5.Click += new System.EventHandler(this.hand1_card5_Click);
             // 
             // hand1_card7
             // 
             this.hand1_card7.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card7.Location = new System.Drawing.Point(1034, 772);
             this.hand1_card7.Name = "hand1_card7";
-            this.hand1_card7.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card7.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card7.Size = new System.Drawing.Size(131, 188);
             this.hand1_card7.TabIndex = 7;
             this.hand1_card7.TabStop = false;
             this.hand1_card7.Click += new System.EventHandler(this.pictureBox8_Click);
@@ -159,24 +181,31 @@
             // hand1_card10
             // 
             this.hand1_card10.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card10.Location = new System.Drawing.Point(1527, 772);
             this.hand1_card10.Name = "hand1_card10";
-            this.hand1_card10.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card10.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card10.Size = new System.Drawing.Size(131, 188);
             this.hand1_card10.TabIndex = 10;
             this.hand1_card10.TabStop = false;
+            this.hand1_card10.Click += new System.EventHandler(this.hand1_card10_Click);
             // 
             // hand1_card9
             // 
             this.hand1_card9.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card9.Location = new System.Drawing.Point(1362, 772);
             this.hand1_card9.Name = "hand1_card9";
-            this.hand1_card9.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card9.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card9.Size = new System.Drawing.Size(131, 188);
             this.hand1_card9.TabIndex = 9;
             this.hand1_card9.TabStop = false;
+            this.hand1_card9.Click += new System.EventHandler(this.hand1_card9_Click);
             // 
             // hand2_card10
             // 
             this.hand2_card10.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card10.Location = new System.Drawing.Point(1527, 50);
             this.hand2_card10.Name = "hand2_card10";
             this.hand2_card10.Size = new System.Drawing.Size(125, 182);
@@ -186,6 +215,7 @@
             // hand2_card9
             // 
             this.hand2_card9.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card9.Location = new System.Drawing.Point(1362, 50);
             this.hand2_card9.Name = "hand2_card9";
             this.hand2_card9.Size = new System.Drawing.Size(125, 182);
@@ -195,6 +225,7 @@
             // hand2_card8
             // 
             this.hand2_card8.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card8.Location = new System.Drawing.Point(1200, 50);
             this.hand2_card8.Name = "hand2_card8";
             this.hand2_card8.Size = new System.Drawing.Size(125, 182);
@@ -204,6 +235,7 @@
             // hand2_card7
             // 
             this.hand2_card7.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card7.Location = new System.Drawing.Point(1034, 50);
             this.hand2_card7.Name = "hand2_card7";
             this.hand2_card7.Size = new System.Drawing.Size(125, 182);
@@ -213,6 +245,7 @@
             // hand2_card6
             // 
             this.hand2_card6.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card6.Location = new System.Drawing.Point(872, 50);
             this.hand2_card6.Name = "hand2_card6";
             this.hand2_card6.Size = new System.Drawing.Size(125, 182);
@@ -222,6 +255,7 @@
             // hand2_card5
             // 
             this.hand2_card5.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card5.Location = new System.Drawing.Point(708, 50);
             this.hand2_card5.Name = "hand2_card5";
             this.hand2_card5.Size = new System.Drawing.Size(125, 182);
@@ -231,6 +265,7 @@
             // hand2_card4
             // 
             this.hand2_card4.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card4.Location = new System.Drawing.Point(543, 50);
             this.hand2_card4.Name = "hand2_card4";
             this.hand2_card4.Size = new System.Drawing.Size(125, 182);
@@ -240,15 +275,18 @@
             // hand2_card3
             // 
             this.hand2_card3.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card3.Location = new System.Drawing.Point(384, 50);
             this.hand2_card3.Name = "hand2_card3";
             this.hand2_card3.Size = new System.Drawing.Size(125, 182);
             this.hand2_card3.TabIndex = 13;
             this.hand2_card3.TabStop = false;
+            this.hand2_card3.Click += new System.EventHandler(this.hand2_card3_Click);
             // 
             // hand2_card2
             // 
             this.hand2_card2.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card2.Location = new System.Drawing.Point(219, 50);
             this.hand2_card2.Name = "hand2_card2";
             this.hand2_card2.Size = new System.Drawing.Size(125, 182);
@@ -258,6 +296,7 @@
             // hand2_card1
             // 
             this.hand2_card1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand2_card1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand2_card1.Location = new System.Drawing.Point(60, 50);
             this.hand2_card1.Name = "hand2_card1";
             this.hand2_card1.Size = new System.Drawing.Size(125, 182);
@@ -267,6 +306,7 @@
             // deck
             // 
             this.deck.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.deck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.deck.Location = new System.Drawing.Point(1719, 387);
             this.deck.Name = "deck";
             this.deck.Size = new System.Drawing.Size(125, 182);
@@ -276,6 +316,7 @@
             // player2_weapon
             // 
             this.player2_weapon.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.player2_weapon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.player2_weapon.Location = new System.Drawing.Point(708, 284);
             this.player2_weapon.Name = "player2_weapon";
             this.player2_weapon.Size = new System.Drawing.Size(125, 182);
@@ -285,6 +326,7 @@
             // player2_armour
             // 
             this.player2_armour.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.player2_armour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.player2_armour.Location = new System.Drawing.Point(872, 284);
             this.player2_armour.Name = "player2_armour";
             this.player2_armour.Size = new System.Drawing.Size(125, 182);
@@ -294,6 +336,7 @@
             // player1_armour
             // 
             this.player1_armour.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.player1_armour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.player1_armour.Location = new System.Drawing.Point(708, 528);
             this.player1_armour.Name = "player1_armour";
             this.player1_armour.Size = new System.Drawing.Size(125, 182);
@@ -303,6 +346,7 @@
             // player1_weapon
             // 
             this.player1_weapon.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.player1_weapon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.player1_weapon.Location = new System.Drawing.Point(872, 528);
             this.player1_weapon.Name = "player1_weapon";
             this.player1_weapon.Size = new System.Drawing.Size(125, 182);
@@ -312,18 +356,33 @@
             // hand1_card8
             // 
             this.hand1_card8.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.hand1_card8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.hand1_card8.Location = new System.Drawing.Point(1200, 772);
             this.hand1_card8.Name = "hand1_card8";
-            this.hand1_card8.Size = new System.Drawing.Size(125, 182);
+            this.hand1_card8.Padding = new System.Windows.Forms.Padding(3);
+            this.hand1_card8.Size = new System.Drawing.Size(131, 188);
             this.hand1_card8.TabIndex = 26;
             this.hand1_card8.TabStop = false;
             this.hand1_card8.Click += new System.EventHandler(this.hand1_card8_Click);
+            // 
+            // btnPlayCards
+            // 
+            this.btnPlayCards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPlayCards.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPlayCards.Location = new System.Drawing.Point(1182, 399);
+            this.btnPlayCards.Name = "btnPlayCards";
+            this.btnPlayCards.Size = new System.Drawing.Size(175, 67);
+            this.btnPlayCards.TabIndex = 27;
+            this.btnPlayCards.Text = "Play cards";
+            this.btnPlayCards.UseVisualStyleBackColor = true;
+            this.btnPlayCards.Click += new System.EventHandler(this.btnPlayCards_Click);
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1895, 1003);
+            this.Controls.Add(this.btnPlayCards);
             this.Controls.Add(this.hand1_card8);
             this.Controls.Add(this.player1_weapon);
             this.Controls.Add(this.player1_armour);
@@ -409,5 +468,6 @@
         private PictureBox player1_armour;
         private PictureBox player1_weapon;
         private PictureBox hand1_card8;
+        private Button btnPlayCards;
     }
 }

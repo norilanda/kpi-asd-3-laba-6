@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameAlgo;
-using CardsUI;
 
 namespace laba6
 {
@@ -20,6 +19,12 @@ namespace laba6
         List<CardUI> hand2;
         List<PictureBox> hand1PictureBox;
         List<PictureBox> hand2PictureBox;
+
+        //CardUI? chosenWeaponCard;
+        //CardUI? chosenArmourCard;
+
+        int? chosenWeaponCardIndex;
+        int? chosenArmourCardIndex;
         public Game(Form1 mainForm, int difficulty)
         {
             InitializeComponent();
@@ -29,8 +34,8 @@ namespace laba6
 
             this.gameAlgo = new GameAlgorithm(difficulty);
 
-            InitializeCardsUI();
             AddPictureBoxToArray();
+            InitializeCardsUI();
             LoadCards();
         }
         void Game_FormClosing(object sender, FormClosingEventArgs e)
@@ -49,8 +54,8 @@ namespace laba6
             this.deck.Load(".\\deck\\shirt.png");
             for(int i=0;i< GameAlgorithm.CARDS_IN_HAND; i++)
             {
-                hand1PictureBox[i].Load(hand1[i].FileName);
-                hand2PictureBox[i].Load(CardUI.FileNameFaceDown);//hand2[i].FileName
+                hand1[i].FaceUp();
+                hand2[i].FaceDown();                
             }
         }
         private void InitializeCardsUI()
@@ -59,8 +64,8 @@ namespace laba6
             hand2 = new List<CardUI>();
             for (int i=0; i< GameAlgorithm.CARDS_IN_HAND; i++)
             {
-                hand1.Add(new CardUI(gameAlgo.Hand1[i]));
-                hand2.Add(new CardUI(gameAlgo.Hand2[i]));
+                hand1.Add(new CardUI(gameAlgo.Hand1[i], hand1PictureBox[i]));
+                hand2.Add(new CardUI(gameAlgo.Hand2[i], hand2PictureBox[i]));
             }
         }
         private void AddPictureBoxToArray()
@@ -96,34 +101,110 @@ namespace laba6
             {
                 case 1:
                     {
-                        hand1PictureBox[WeaponIndex].Image = null;
+                        hand1[WeaponIndex].MoveTo(player1_weapon);
+                        hand1[ArmourIndex].MoveTo(player1_armour);
                         //----------------------
                         break;
                     }
                 case 2:
                 {
-                    //------------------------------
-                    break;
+                        hand2[WeaponIndex].MoveTo(player2_weapon);
+                        hand2[ArmourIndex].MoveTo(player2_armour);
+                        //------------------------------
+                        break;
                 }
             }
         }
-        private void ChooseCard()
+        private void ChooseCard(int cardIndex)
         {
+            if (hand1[cardIndex].GetColor == CardUI.SuitColor.black)
+            {
+                if (chosenWeaponCardIndex == cardIndex)
+                {
+                    chosenWeaponCardIndex = null;
+                    hand1[cardIndex].MarkUnchosen();
+                }
+                else
+                {
+                    if (chosenWeaponCardIndex != null)
+                        hand1[(int)chosenWeaponCardIndex].MarkUnchosen();
+                    chosenWeaponCardIndex = cardIndex;
+                    hand1[cardIndex].MarkChosen();
+                }
+            }
+            else if (hand1[cardIndex].GetColor == CardUI.SuitColor.red)
+            {
+                if (chosenArmourCardIndex == cardIndex)
+                {
+                    chosenArmourCardIndex = null;
+                    hand1[cardIndex].MarkUnchosen();
+                }
+                else
+                {
+                    if (chosenArmourCardIndex != null)
+                        hand1[(int)chosenArmourCardIndex].MarkUnchosen();
+                    chosenArmourCardIndex = cardIndex;
+                    hand1[cardIndex].MarkChosen();
+                }
+            }
 
+        }
+        private void hand1_card1_Click(object sender, EventArgs e)
+        {
+            ChooseCard(0);
+        }
+        private void hand1_card2_Click(object sender, EventArgs e)
+        {
+            ChooseCard(1);
+        }
+        private void hand1_card3_Click(object sender, EventArgs e)
+        {
+            ChooseCard(2);
+        }
+        private void hand1_card4_Click(object sender, EventArgs e)
+        {
+            ChooseCard(3);
+        }
+        private void hand1_card5_Click(object sender, EventArgs e)
+        {
+            ChooseCard(4);
+        }
+        private void hand1_card6_Click(object sender, EventArgs e)
+        {
+            ChooseCard(5);
+        }
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            ChooseCard(6);
         }
         private void hand1_card8_Click(object sender, EventArgs e)
         {
-
+            ChooseCard(7);
+        }
+        private void hand1_card9_Click(object sender, EventArgs e)
+        {
+            ChooseCard(8);
+        }
+        private void hand1_card10_Click(object sender, EventArgs e)
+        {
+            ChooseCard(9);
         }
 
-
-
-
-
-
-        private void pictureBox8_Click(object sender, EventArgs e)
+        private void hand2_card3_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void btnPlayCards_Click(object sender, EventArgs e)
+        {
+            if(chosenArmourCardIndex != null && chosenWeaponCardIndex != null)
+            {
+                PlayBot(1, (int)chosenWeaponCardIndex, (int)chosenArmourCardIndex);
+            }
+            else
+            {
+                MessageBox.Show("You haven't chosen caards!");
+            }
         }
     }
 }
