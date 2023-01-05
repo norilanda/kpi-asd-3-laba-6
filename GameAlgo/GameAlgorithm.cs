@@ -51,16 +51,45 @@ namespace GameAlgo
         {
             player1.BotWeaponIndex = weaponIndex;
             player1.BotArmourIndex = armourIndex;
+          
+            Response(player1.BotArmour);
         }
-        public void MakeMove(out int? weaponIndex, out int? armourIndex)
+        public bool MakeMove(out int? weaponIndex, out int? armourIndex)
         {
             weaponIndex = player2.BotWeaponIndex;
             armourIndex = player2.BotArmourIndex;
+            if (weaponIndex == null)//check if skip
+                return false;
+            player2.DeleteCardsAfterMove();
+            return true;
         }
-        private int? EasyBotWeapon(Player player)
+        private void Response(Card cardToBeat)
         {
-            return player.FindMaxBlackCard();
+            switch (_gameMode)
+            {
+                case Mode.Easy:
+                    {
+                        player2.BotWeaponIndex = player2.EasyBotWeaponForBeating(cardToBeat);                        
+                        if (player2.BotWeaponIndex != null)
+                        {
+                            player2.BotArmourIndex = player2.EasyBotArmour();
+                            if (player2.BotArmourIndex == null)
+                                player2.BotWeaponIndex = null;
+                        }
+                        break;
+                    }
+                case Mode.Medium:
+                    {
+                        break;
+                    }
+                case Mode.Difficult:
+                    {
+                        break;
+                    }
+            }
+            player1.DeleteCardsAfterMove();
         }
-        
+     
+
     }
 }

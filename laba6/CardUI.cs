@@ -18,12 +18,12 @@ namespace laba6
         private static string _fileNameFaceDown = ".\\deck\\shirt.png";
         private string _fileName;
         private PictureBox _picture;
-        Card? _card;
+        private Card? _card;
 
         public static Color unchosenBackColor = Color.White;
         public string FileName => _fileName;
         public PictureBox Picture => _picture;
-        Card? GetCard => _card;
+        public Card? GetCard => _card;
         public bool IsEmpty => _card == null;
         public static string FileNameFaceDown => _fileNameFaceDown;
         public SuitColor GetColor

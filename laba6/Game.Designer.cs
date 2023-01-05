@@ -56,6 +56,12 @@
             this.hand1_card8 = new System.Windows.Forms.PictureBox();
             this.btnPlayCards = new System.Windows.Forms.Button();
             this.btnSkipMove = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblRoundNumber = new System.Windows.Forms.Label();
+            this.lblPlayer2Score = new System.Windows.Forms.Label();
+            this.lblPlayer1Score = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card4)).BeginInit();
@@ -389,11 +395,77 @@
             this.btnSkipMove.Text = "Skip Move";
             this.btnSkipMove.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(136, 415);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(196, 38);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Player 2 score:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(136, 504);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(196, 38);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Player 1 score:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(136, 342);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(209, 38);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Round number:";
+            // 
+            // lblRoundNumber
+            // 
+            this.lblRoundNumber.AutoSize = true;
+            this.lblRoundNumber.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblRoundNumber.Location = new System.Drawing.Point(384, 342);
+            this.lblRoundNumber.Name = "lblRoundNumber";
+            this.lblRoundNumber.Size = new System.Drawing.Size(32, 38);
+            this.lblRoundNumber.TabIndex = 32;
+            this.lblRoundNumber.Text = "1";
+            // 
+            // lblPlayer2Score
+            // 
+            this.lblPlayer2Score.AutoSize = true;
+            this.lblPlayer2Score.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPlayer2Score.Location = new System.Drawing.Point(384, 415);
+            this.lblPlayer2Score.Name = "lblPlayer2Score";
+            this.lblPlayer2Score.Size = new System.Drawing.Size(32, 38);
+            this.lblPlayer2Score.TabIndex = 33;
+            this.lblPlayer2Score.Text = "0";
+            // 
+            // lblPlayer1Score
+            // 
+            this.lblPlayer1Score.AutoSize = true;
+            this.lblPlayer1Score.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPlayer1Score.Location = new System.Drawing.Point(384, 504);
+            this.lblPlayer1Score.Name = "lblPlayer1Score";
+            this.lblPlayer1Score.Size = new System.Drawing.Size(32, 38);
+            this.lblPlayer1Score.TabIndex = 34;
+            this.lblPlayer1Score.Text = "0";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1895, 1003);
+            this.Controls.Add(this.lblPlayer1Score);
+            this.Controls.Add(this.lblPlayer2Score);
+            this.Controls.Add(this.lblRoundNumber);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSkipMove);
             this.Controls.Add(this.btnPlayCards);
             this.Controls.Add(this.hand1_card8);
@@ -450,6 +522,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.player1_weapon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card8)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -483,5 +556,11 @@
         private PictureBox hand1_card8;
         private Button btnPlayCards;
         private Button btnSkipMove;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label lblRoundNumber;
+        private Label lblPlayer2Score;
+        private Label lblPlayer1Score;
     }
 }

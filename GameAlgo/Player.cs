@@ -30,6 +30,15 @@ namespace GameAlgo
         {
             this._hand = hand;
         }
+        public Card BotWeapon => (Card)_hand[(int)_botWeaponIndex];
+        public Card BotArmour => (Card)_hand[(int)BotArmourIndex];
+        public void DeleteCardsAfterMove()
+        {
+            _hand[(int)_botArmourIndex] = null;
+            _hand[(int)_botWeaponIndex] = null;
+        }
+
+        //FIND MIN OR MAX CARDS
         public int? FindMinRedCard()
         {
             int? minCardIndex = null;
@@ -89,6 +98,34 @@ namespace GameAlgo
                 }
             }
             return maxCardIndex;
+        }
+
+        //EASY LEVEL
+        public int? EasyBotWeaponForCreation()
+        {
+            return FindMaxBlackCard();
+        }
+        public int? EasyBotWeaponForBeating(Card cardToBeat)
+        {
+            int? index = FindMaxBlackCard();
+            if (index == null || _hand[(int)index].CardRank < cardToBeat.CardRank)
+                return null;
+            return index;
+        }
+        public int? EasyBotArmour()
+        {
+            List<int> redCardsIndexes = new List<int>();
+            for (int i = 0; i < _hand.Count;i++)
+            {
+                if (_hand[i] == null)
+                    continue;
+                if (_hand[i].CardSuit == Card.Suit.diamonds || _hand[i].CardSuit == Card.Suit.hearts)
+                    redCardsIndexes.Add(i);
+            }
+            if (redCardsIndexes.Count == 0)
+                return null;
+            Random rnd = new Random();
+            return redCardsIndexes[rnd.Next(redCardsIndexes.Count)];
         }
     }
 }
