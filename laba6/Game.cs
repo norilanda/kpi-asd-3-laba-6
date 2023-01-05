@@ -19,18 +19,18 @@ namespace laba6
         List<CardUI> hand2;
         List<PictureBox> hand1PictureBox;
         List<PictureBox> hand2PictureBox;
-
-        //CardUI? chosenWeaponCard;
-        //CardUI? chosenArmourCard;
+        CardUI deckCard;
 
         int? chosenWeaponCardIndex;
         int? chosenArmourCardIndex;
+
         public Game(Form1 mainForm, int difficulty)
         {
             InitializeComponent();
             this.mainForm = mainForm;
             this.WindowState = FormWindowState.Maximized;
             this.FormClosing += new FormClosingEventHandler(Game_FormClosing);
+            CardUI.unchosenBackColor = this.BackColor;
 
             this.gameAlgo = new GameAlgorithm(difficulty);
 
@@ -51,7 +51,9 @@ namespace laba6
 
         private void LoadCards()
         {
-            this.deck.Load(".\\deck\\shirt.png");
+            deckCard = new CardUI(null, this.deck);
+            deckCard.FaceDown();
+            //this.deck.Load(".\\deck\\shirt.png");
             for(int i=0;i< GameAlgorithm.CARDS_IN_HAND; i++)
             {
                 hand1[i].FaceUp();
@@ -103,6 +105,8 @@ namespace laba6
                     {
                         hand1[WeaponIndex].MoveTo(player1_weapon);
                         hand1[ArmourIndex].MoveTo(player1_armour);
+                        chosenWeaponCardIndex = null;
+                        chosenArmourCardIndex = null;                        
                         //----------------------
                         break;
                     }
@@ -117,6 +121,8 @@ namespace laba6
         }
         private void ChooseCard(int cardIndex)
         {
+            if (hand1[cardIndex].IsEmpty)
+                return;
             if (hand1[cardIndex].GetColor == CardUI.SuitColor.black)
             {
                 if (chosenWeaponCardIndex == cardIndex)
@@ -200,6 +206,7 @@ namespace laba6
             if(chosenArmourCardIndex != null && chosenWeaponCardIndex != null)
             {
                 PlayBot(1, (int)chosenWeaponCardIndex, (int)chosenArmourCardIndex);
+                
             }
             else
             {

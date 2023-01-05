@@ -18,11 +18,12 @@ namespace laba6
         private static string _fileNameFaceDown = ".\\deck\\shirt.png";
         private string _fileName;
         private PictureBox _picture;
-        Card _card;
+        Card? _card;
 
         public static Color unchosenBackColor = Color.White;
         public string FileName => _fileName;
         public PictureBox Picture => _picture;
+        public bool IsEmpty => _card == null;
         public static string FileNameFaceDown => _fileNameFaceDown;
         public SuitColor GetColor
         {
@@ -41,6 +42,12 @@ namespace laba6
             SetFileName();
             this._picture = pBox;
             this._picture.BackColor = unchosenBackColor;
+        }
+        public void SetEmpty()
+        { 
+            _picture.BackColor = unchosenBackColor;
+            _fileName = "";
+            _card = null;
         }
         public void FaceUp()
         {
@@ -61,6 +68,11 @@ namespace laba6
         private void SetFileName()
         {
             _fileName = ".\\deck\\";
+            if(_card == null )
+            {
+                _fileName = "";
+                return;
+            }
             switch (_card.CardRank)
             {
                 case Card.Rank.r2:
@@ -161,9 +173,14 @@ namespace laba6
         }
         public void MoveTo(PictureBox pBox)
         {
-            _picture.BackColor = unchosenBackColor;
             _picture.Image = null;
             pBox.Load(_fileName);
+            SetEmpty();
+        }
+        public void AddCard(Card card)
+        {
+            //
+            //-----
         }
     }
 }
