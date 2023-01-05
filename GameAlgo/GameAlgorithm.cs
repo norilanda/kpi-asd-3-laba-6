@@ -50,7 +50,10 @@ namespace GameAlgo
             player1.UnchooseAllCards();
             player2.UnchooseAllCards();
 
-            DealCardsForPlayers();
+            deck = Card.GenerateDeck();
+            player1.Hand = HandCards();
+            player2.Hand = HandCards();
+            //DealCardsForPlayers();
         }
         private void InitiateGame()
         {
@@ -124,6 +127,7 @@ namespace GameAlgo
                             {
                                 player2.UnchooseAllCards();
                                 SkipMove(2);
+                                NewRound();
                             }
                             else
                             {
@@ -131,7 +135,9 @@ namespace GameAlgo
                             }
                         }
                         else
+                        {
                             SkipMove(2);
+                        }
                         break;
                     }
                 case Mode.Medium:

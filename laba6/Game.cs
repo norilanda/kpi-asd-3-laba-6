@@ -151,7 +151,7 @@ namespace laba6
                     else
                     {
                         gameAlgo.NewRound();
-                        VisualizeCardsAfterBattle();                       
+                        NewRound();                       
                     }
                     this.btnPlayCards.Enabled = true;
                     this.lblPlayersTurns.Text = "Your turn!";
@@ -209,12 +209,32 @@ namespace laba6
             }
             
         }
-
+        private void RenewCardsForNewRound()
+        {
+            for(int i = 0; i < player1.Hand.Count; i++)
+            {               
+                player1.Hand[i].AddCard(gameAlgo.Hand1[i]);
+                player1.Hand[i].FaceUp();
+                
+                player2.Hand[i].AddCard(gameAlgo.Hand2[i]);
+                player2.Hand[i].FaceUp();//FaceDown                
+            }            
+        }
+        private void NewRound()
+        {
+            SetTimer(fasterSpeedInMs);
+            ClearBattleField();
+            SetTimer(slowerSpeedInMs);
+            RenewCardsForNewRound();
+            RefreshScores();
+        }
         private void btnSkipMove_Click(object sender, EventArgs e)
         {
             player1.UnchooseAllCards();
             this.lblPlayersTurns.Text = "";
             gameAlgo.AcceptMove(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
+
+            NewRound();
 
             int? armourIndex, weaponIndex;
             
