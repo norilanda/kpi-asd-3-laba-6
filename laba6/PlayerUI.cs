@@ -87,11 +87,15 @@ namespace laba6
                 }
             }
         }
-        //public void ClearBattleField()
-        //{
-        //    _chosenWeaponCardIndex = null;
-        //    _chosenArmourCardIndex = null;
-        //}
+      
+        public void ClearBot()
+        {
+            _chosenWeaponCardIndex = null;
+            _chosenArmourCardIndex = null;
+            _weaponCard.SetEmpty();
+            _armourCard.SetEmpty();
+
+        }
         public void PlayBot()
         {
             _hand[(int)_chosenWeaponCardIndex].MoveTo(_weaponCard);

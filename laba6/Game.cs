@@ -18,19 +18,12 @@ namespace laba6
         PlayerUI player1;
         PlayerUI player2;
 
-        //List<CardUI> hand1;
-        //List<CardUI> hand2;
         List<PictureBox> hand1PictureBox;
         List<PictureBox> hand2PictureBox;
         CardUI deckCard;
 
-        //CardUI player1WeaponCardUI;
-        //CardUI player1ArmourCardUI;
-        //CardUI player2WeaponCardUI;
-        //CardUI player2ArmourCardUI;
-
-        //int? chosenWeaponCardIndex;
-        //int? chosenArmourCardIndex;
+        static System.Windows.Forms.Timer gameTimer = new System.Windows.Forms.Timer();
+        static bool exitFlag = false;
 
         public Game(Form1 mainForm, int difficulty)
         {
@@ -131,8 +124,10 @@ namespace laba6
                     {
                         player2.ChosenArmourCardIndex = armourIndex;
                         player2.ChosenWeaponCardIndex = weaponIndex;
-                        Task.Delay(1000);
+                        SetTimer(1000);
                         player2.PlayBot();
+                        SetTimer(2000);
+                        ClearBattleField();
                     }
                     else
                     {
@@ -156,6 +151,11 @@ namespace laba6
             {
                 MessageBox.Show("You haven't chosen cards!");
             }
+        }
+        private void ClearBattleField()
+        {
+            player1.ClearBot();
+            player2.ClearBot();
         }
         private void hand1_card1_Click(object sender, EventArgs e)
         {
@@ -203,6 +203,26 @@ namespace laba6
             
         }
 
-    
+        private void SetTimer(int ms)
+        {
+            /* Adds the event and the event handler for the method that will 
+        process the timer event to the timer. */
+            gameTimer.Tick += new EventHandler(TimerEventProcessor);
+            gameTimer.Interval = ms; // Sets the timer interval to 1 seconds.
+            gameTimer.Start();
+
+            while (exitFlag == false)   // Runs the timer, and raises the event.
+            {
+                Application.DoEvents(); // Processes all the events in the queue.
+            }
+            exitFlag = false;
+        }
+        private static void TimerEventProcessor(Object myObject, EventArgs myEventArgs) // This is the method to run when the timer is raised.
+        {
+            gameTimer.Stop();
+            // Stops the timer.
+            exitFlag = true;
+        }
+
     }
 }
