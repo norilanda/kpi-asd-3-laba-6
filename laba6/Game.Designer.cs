@@ -64,6 +64,7 @@
             this.lblPlayer1Score = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblNumberDeadBots = new System.Windows.Forms.Label();
+            this.lblPlayersTurns = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card4)).BeginInit();
@@ -391,9 +392,9 @@
             this.btnSkipMove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnSkipMove.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSkipMove.Image = global::laba6.Properties.Resources.skip_move;
-            this.btnSkipMove.Location = new System.Drawing.Point(1100, 528);
+            this.btnSkipMove.Location = new System.Drawing.Point(1381, 391);
             this.btnSkipMove.Name = "btnSkipMove";
-            this.btnSkipMove.Size = new System.Drawing.Size(231, 72);
+            this.btnSkipMove.Size = new System.Drawing.Size(240, 75);
             this.btnSkipMove.TabIndex = 28;
             this.btnSkipMove.UseVisualStyleBackColor = true;
             this.btnSkipMove.Click += new System.EventHandler(this.btnSkipMove_Click);
@@ -478,11 +479,22 @@
             this.lblNumberDeadBots.TabIndex = 36;
             this.lblNumberDeadBots.Text = "0";
             // 
+            // lblPlayersTurns
+            // 
+            this.lblPlayersTurns.AutoSize = true;
+            this.lblPlayersTurns.Font = new System.Drawing.Font("Yu Gothic UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPlayersTurns.Location = new System.Drawing.Point(1272, 541);
+            this.lblPlayersTurns.Name = "lblPlayersTurns";
+            this.lblPlayersTurns.Size = new System.Drawing.Size(184, 50);
+            this.lblPlayersTurns.TabIndex = 37;
+            this.lblPlayersTurns.Text = "Your turn!";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1895, 1003);
+            this.Controls.Add(this.lblPlayersTurns);
             this.Controls.Add(this.lblNumberDeadBots);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblPlayer1Score);
@@ -589,5 +601,6 @@
         private Label lblPlayer1Score;
         private Label label4;
         private Label lblNumberDeadBots;
+        private Label lblPlayersTurns;
     }
 }

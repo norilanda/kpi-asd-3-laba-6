@@ -24,7 +24,7 @@ namespace laba6
 
         static System.Windows.Forms.Timer gameTimer = new System.Windows.Forms.Timer();
         static bool exitFlag = false;
-        int slowerSpeedInMs = 1800;
+        int slowerSpeedInMs = 1700;
         int fasterSpeedInMs = 1000;
 
         public Game(Form1 mainForm, int difficulty)
@@ -113,6 +113,8 @@ namespace laba6
             this.lblPlayer1Score.Text = Convert.ToString(gameAlgo.Score1);
             this.lblPlayer2Score.Text = Convert.ToString(gameAlgo.Score2);
             this.lblRoundNumber.Text = Convert.ToString(gameAlgo.RoundNumber);
+            if (gameAlgo.IsDeckEmpty())
+                this.deckCard.SetEmpty();
         }
         
         private void btnPlayCards_Click(object sender, EventArgs e)
@@ -120,38 +122,39 @@ namespace laba6
             if (player1.ChosenArmourCardIndex != null && player1.ChosenWeaponCardIndex != null)
             {
                 this.btnPlayCards.Enabled = false;
-                if (player2.WeaponCard.IsEmpty)
+                if (player2.WeaponCard.IsEmpty)//deciding play or beat bot
                 {
                     player1.PlayBot();
+                    this.lblPlayersTurns.Text = "";
                     gameAlgo.AcceptMove(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
                     //
-                    player1.ChosenWeaponCardIndex = null;
-                    player1.ChosenArmourCardIndex = null;
+                    player1.UnchooseAllCards();
                     int? armourIndex, weaponIndex;
                     
                     if (gameAlgo.MakeMove(out weaponIndex, out armourIndex))
                     {
+                        //a-i beats
                         player2.ChosenArmourCardIndex = armourIndex;
                         player2.ChosenWeaponCardIndex = weaponIndex;
                         SetTimer(fasterSpeedInMs);
                         player2.PlayBot();
-
+                        //відбій
                         VisualizeCardsAfterBattle();
-
+                        //a-i moves forward
                         gameAlgo.CreateBot();
                         gameAlgo.MakeMove(out weaponIndex, out armourIndex);
                         player2.ChosenArmourCardIndex = armourIndex;
                         player2.ChosenWeaponCardIndex = weaponIndex;
                         SetTimer(fasterSpeedInMs);
-                        player2.PlayBot();
-                        this.btnPlayCards.Enabled = true;
+                        player2.PlayBot();                        
                     }
                     else
                     {
                         gameAlgo.NewRound();
-                        VisualizeCardsAfterBattle();
-                        this.btnPlayCards.Enabled = true;
+                        VisualizeCardsAfterBattle();                       
                     }
+                    this.btnPlayCards.Enabled = true;
+                    this.lblPlayersTurns.Text = "Your turn!";
                     RefreshScores();
                 }
                 else
@@ -159,16 +162,16 @@ namespace laba6
                     if(player1.BeatBot(player2.ArmourCard.GetCard))
                     {
                         gameAlgo.AcceptResponse(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
+                        //відбій
                         VisualizeCardsAfterBattle();
                         RefreshScores();
-                        this.btnPlayCards.Enabled = true;
                     }
                     else
                     {
-                        this.btnPlayCards.Enabled = true;
+                        
                     }
-                }
-                
+                    this.btnPlayCards.Enabled = true;
+                }                
             }
             else
             {
@@ -209,9 +212,10 @@ namespace laba6
 
         private void btnSkipMove_Click(object sender, EventArgs e)
         {
-            player1.ChosenWeaponCardIndex = null;
-            player1.ChosenArmourCardIndex = null;
+            player1.UnchooseAllCards();
+            this.lblPlayersTurns.Text = "";
             gameAlgo.AcceptMove(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
+
             int? armourIndex, weaponIndex;
             
             gameAlgo.CreateBot();
@@ -221,7 +225,7 @@ namespace laba6
             SetTimer(fasterSpeedInMs);
             player2.PlayBot();
             this.btnPlayCards.Enabled = true;
-
+            this.lblPlayersTurns.Text = "Your turn!";
         }
         private void hand1_card1_Click(object sender, EventArgs e)
         {

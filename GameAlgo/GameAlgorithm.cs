@@ -26,6 +26,7 @@ namespace GameAlgo
         public List<Card?> Hand2 => player2.Hand;
         public int Score1 => player1.Score;
         public int Score2 => player2.Score;
+        public bool IsDeckEmpty() => deck.Count == 0;
         public int RoundNumber
         {
             get => _roundNumber;
@@ -46,7 +47,10 @@ namespace GameAlgo
         {
             _roundNumber++;
             _deadBotNumber= 0;
-            //DealCardsForPlayers();
+            player1.UnchooseAllCards();
+            player2.UnchooseAllCards();
+
+            DealCardsForPlayers();
         }
         private void InitiateGame()
         {
@@ -71,12 +75,11 @@ namespace GameAlgo
         {
             player1.BotWeaponIndex = weaponIndex;
             player1.BotArmourIndex = armourIndex;
-            if (weaponIndex == null)
+            if (weaponIndex == null)//if player1 skips move
             {
                 SkipMove(1);
                 NewRound();
-            }
-                
+            }                
             else
                 Response(player1.BotArmour);
         }
@@ -119,7 +122,7 @@ namespace GameAlgo
                             player2.BotArmourIndex = player2.EasyBotArmour();
                             if (player2.BotArmourIndex == null)
                             {
-                                player2.BotWeaponIndex = null;
+                                player2.UnchooseAllCards();
                                 SkipMove(2);
                             }
                             else
@@ -153,7 +156,7 @@ namespace GameAlgo
                         {
                             player2.BotArmourIndex = player2.EasyBotArmour();
                             if (player2.BotArmourIndex == null)
-                                player2.BotWeaponIndex = null;
+                                player2.UnchooseAllCards();
                         }
                         break;
                     }

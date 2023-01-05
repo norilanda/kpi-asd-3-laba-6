@@ -174,11 +174,6 @@ namespace laba6
             }
             _fileName += ".png";
         }
-        private void MoveTo(PictureBox pBox)
-        {           
-            pBox.Load(_fileName);
-            SetEmpty();
-        }
         public void MoveTo(CardUI cardUI)
         {
             cardUI.AddCard(this._card);

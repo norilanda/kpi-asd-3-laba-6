@@ -43,6 +43,11 @@ namespace GameAlgo
             _hand[(int)_botArmourIndex] = null;
             _hand[(int)_botWeaponIndex] = null;
         }
+        public void UnchooseAllCards()
+        {
+            _botArmourIndex = null;
+            _botWeaponIndex = null;
+        }
         public void DealCards(List<Card> deck)
         {
             Random rnd = new Random();

@@ -87,6 +87,13 @@ namespace laba6
                 }
             }
         }
+        public void UnchooseAllCards()
+        {
+            _weaponCard.MarkUnchosen();
+            _armourCard.MarkUnchosen();
+            _chosenWeaponCardIndex = null;
+            _chosenArmourCardIndex = null;
+        }
       
         public void ClearBot()
         {
