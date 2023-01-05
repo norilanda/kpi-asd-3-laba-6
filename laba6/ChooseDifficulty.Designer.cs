@@ -38,44 +38,44 @@
             // btnMedium
             // 
             this.btnMedium.Font = new System.Drawing.Font("SimSun-ExtB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnMedium.Location = new System.Drawing.Point(562, 285);
+            this.btnMedium.Image = global::laba6.Properties.Resources.medium;
+            this.btnMedium.Location = new System.Drawing.Point(548, 285);
             this.btnMedium.Name = "btnMedium";
-            this.btnMedium.Size = new System.Drawing.Size(245, 109);
+            this.btnMedium.Size = new System.Drawing.Size(281, 109);
             this.btnMedium.TabIndex = 3;
-            this.btnMedium.Text = "Medium";
             this.btnMedium.UseVisualStyleBackColor = true;
             this.btnMedium.Click += new System.EventHandler(this.btnMedium_Click);
             // 
             // btnEasy
             // 
             this.btnEasy.Font = new System.Drawing.Font("SimSun-ExtB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnEasy.Location = new System.Drawing.Point(562, 152);
+            this.btnEasy.Image = global::laba6.Properties.Resources.easy;
+            this.btnEasy.Location = new System.Drawing.Point(548, 152);
             this.btnEasy.Name = "btnEasy";
-            this.btnEasy.Size = new System.Drawing.Size(245, 109);
+            this.btnEasy.Size = new System.Drawing.Size(281, 109);
             this.btnEasy.TabIndex = 2;
-            this.btnEasy.Text = "Easy";
             this.btnEasy.UseVisualStyleBackColor = true;
             this.btnEasy.Click += new System.EventHandler(this.btnEasy_Click);
             // 
             // btnMenu
             // 
             this.btnMenu.Font = new System.Drawing.Font("SimSun-ExtB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnMenu.Location = new System.Drawing.Point(562, 546);
+            this.btnMenu.Image = global::laba6.Properties.Resources.back_to_menu;
+            this.btnMenu.Location = new System.Drawing.Point(548, 546);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(245, 109);
+            this.btnMenu.Size = new System.Drawing.Size(281, 109);
             this.btnMenu.TabIndex = 5;
-            this.btnMenu.Text = "Back To Menu";
             this.btnMenu.UseVisualStyleBackColor = true;
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // btnHard
             // 
             this.btnHard.Font = new System.Drawing.Font("SimSun-ExtB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnHard.Location = new System.Drawing.Point(562, 413);
+            this.btnHard.Image = global::laba6.Properties.Resources.hard;
+            this.btnHard.Location = new System.Drawing.Point(548, 413);
             this.btnHard.Name = "btnHard";
-            this.btnHard.Size = new System.Drawing.Size(245, 109);
+            this.btnHard.Size = new System.Drawing.Size(281, 109);
             this.btnHard.TabIndex = 4;
-            this.btnHard.Text = "Hard";
             this.btnHard.UseVisualStyleBackColor = true;
             this.btnHard.Click += new System.EventHandler(this.btnHard_Click);
             // 

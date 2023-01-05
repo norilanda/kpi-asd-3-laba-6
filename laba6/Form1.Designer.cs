@@ -35,22 +35,22 @@
             // btnStartGame
             // 
             this.btnStartGame.Font = new System.Drawing.Font("SimSun-ExtB", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnStartGame.Location = new System.Drawing.Point(556, 145);
+            this.btnStartGame.Image = global::laba6.Properties.Resources.start_game;
+            this.btnStartGame.Location = new System.Drawing.Point(471, 143);
             this.btnStartGame.Name = "btnStartGame";
-            this.btnStartGame.Size = new System.Drawing.Size(245, 109);
+            this.btnStartGame.Size = new System.Drawing.Size(421, 119);
             this.btnStartGame.TabIndex = 0;
-            this.btnStartGame.Text = "Start Game";
             this.btnStartGame.UseVisualStyleBackColor = true;
             this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
             // 
             // btnQuite
             // 
             this.btnQuite.Font = new System.Drawing.Font("SimSun-ExtB", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnQuite.Image = global::laba6.Properties.Resources.quite;
             this.btnQuite.Location = new System.Drawing.Point(556, 320);
             this.btnQuite.Name = "btnQuite";
             this.btnQuite.Size = new System.Drawing.Size(245, 109);
             this.btnQuite.TabIndex = 1;
-            this.btnQuite.Text = "Quite";
             this.btnQuite.UseVisualStyleBackColor = true;
             this.btnQuite.Click += new System.EventHandler(this.btnQuite_Click);
             // 

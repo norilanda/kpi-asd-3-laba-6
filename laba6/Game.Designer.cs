@@ -55,6 +55,7 @@
             this.player1_weapon = new System.Windows.Forms.PictureBox();
             this.hand1_card8 = new System.Windows.Forms.PictureBox();
             this.btnPlayCards = new System.Windows.Forms.Button();
+            this.btnSkipMove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card4)).BeginInit();
@@ -369,19 +370,31 @@
             // 
             this.btnPlayCards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnPlayCards.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPlayCards.Location = new System.Drawing.Point(1182, 399);
+            this.btnPlayCards.Image = global::laba6.Properties.Resources.play_cards;
+            this.btnPlayCards.Location = new System.Drawing.Point(1100, 352);
             this.btnPlayCards.Name = "btnPlayCards";
-            this.btnPlayCards.Size = new System.Drawing.Size(175, 67);
+            this.btnPlayCards.Size = new System.Drawing.Size(362, 114);
             this.btnPlayCards.TabIndex = 27;
-            this.btnPlayCards.Text = "Play cards";
             this.btnPlayCards.UseVisualStyleBackColor = true;
             this.btnPlayCards.Click += new System.EventHandler(this.btnPlayCards_Click);
+            // 
+            // btnSkipMove
+            // 
+            this.btnSkipMove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSkipMove.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSkipMove.Location = new System.Drawing.Point(1100, 528);
+            this.btnSkipMove.Name = "btnSkipMove";
+            this.btnSkipMove.Size = new System.Drawing.Size(175, 67);
+            this.btnSkipMove.TabIndex = 28;
+            this.btnSkipMove.Text = "Skip Move";
+            this.btnSkipMove.UseVisualStyleBackColor = true;
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1895, 1003);
+            this.Controls.Add(this.btnSkipMove);
             this.Controls.Add(this.btnPlayCards);
             this.Controls.Add(this.hand1_card8);
             this.Controls.Add(this.player1_weapon);
@@ -469,5 +482,6 @@
         private PictureBox player1_weapon;
         private PictureBox hand1_card8;
         private Button btnPlayCards;
+        private Button btnSkipMove;
     }
 }

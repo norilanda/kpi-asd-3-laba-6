@@ -21,6 +21,11 @@ namespace laba6
         List<PictureBox> hand2PictureBox;
         CardUI deckCard;
 
+        CardUI player1WeaponCardUI;
+        CardUI player1ArmourCardUI;
+        CardUI player2WeaponCardUI;
+        CardUI player2ArmourCardUI;
+
         int? chosenWeaponCardIndex;
         int? chosenArmourCardIndex;
 
@@ -69,6 +74,11 @@ namespace laba6
                 hand1.Add(new CardUI(gameAlgo.Hand1[i], hand1PictureBox[i]));
                 hand2.Add(new CardUI(gameAlgo.Hand2[i], hand2PictureBox[i]));
             }
+            player1WeaponCardUI = new CardUI(null, this.player1_weapon);
+            player1ArmourCardUI = new CardUI(null, this.player1_armour);
+
+            player2WeaponCardUI = new CardUI(null, this.player2_weapon);
+            player2ArmourCardUI = new CardUI(null, this.player2_armour);
         }
         private void AddPictureBoxToArray()
         {
@@ -103,8 +113,8 @@ namespace laba6
             {
                 case 1:
                     {
-                        hand1[WeaponIndex].MoveTo(player1_weapon);
-                        hand1[ArmourIndex].MoveTo(player1_armour);
+                        hand1[WeaponIndex].MoveTo(player1WeaponCardUI);
+                        hand1[ArmourIndex].MoveTo(player1ArmourCardUI);
                         chosenWeaponCardIndex = null;
                         chosenArmourCardIndex = null;                        
                         //----------------------
@@ -112,8 +122,8 @@ namespace laba6
                     }
                 case 2:
                 {
-                        hand2[WeaponIndex].MoveTo(player2_weapon);
-                        hand2[ArmourIndex].MoveTo(player2_armour);
+                        hand2[WeaponIndex].MoveTo(player2WeaponCardUI);
+                        hand2[ArmourIndex].MoveTo(player2ArmourCardUI);
                         //------------------------------
                         break;
                 }
@@ -206,7 +216,7 @@ namespace laba6
             if(chosenArmourCardIndex != null && chosenWeaponCardIndex != null)
             {
                 PlayBot(1, (int)chosenWeaponCardIndex, (int)chosenArmourCardIndex);
-                
+                this.btnPlayCards.Enabled = false;
             }
             else
             {

@@ -23,6 +23,7 @@ namespace laba6
         public static Color unchosenBackColor = Color.White;
         public string FileName => _fileName;
         public PictureBox Picture => _picture;
+        Card? GetCard => _card;
         public bool IsEmpty => _card == null;
         public static string FileNameFaceDown => _fileNameFaceDown;
         public SuitColor GetColor
@@ -36,7 +37,7 @@ namespace laba6
                 return SuitColor.noColor;
             }
         }
-        public CardUI(Card card, PictureBox pBox)
+        public CardUI(Card? card, PictureBox pBox)
         {
             this._card = card;
             SetFileName();
@@ -46,6 +47,7 @@ namespace laba6
         public void SetEmpty()
         { 
             _picture.BackColor = unchosenBackColor;
+            _picture.Image = null;
             _fileName = "";
             _card = null;
         }
@@ -171,14 +173,21 @@ namespace laba6
             }
             _fileName += ".png";
         }
-        public void MoveTo(PictureBox pBox)
-        {
-            _picture.Image = null;
+        private void MoveTo(PictureBox pBox)
+        {           
             pBox.Load(_fileName);
             SetEmpty();
         }
-        public void AddCard(Card card)
+        public void MoveTo(CardUI cardUI)
         {
+            cardUI.AddCard(this._card);
+            cardUI.FaceUp();
+            SetEmpty();
+        }
+        public void AddCard(Card? card)
+        {
+            this._card = card;
+            SetFileName(); 
             //
             //-----
         }
