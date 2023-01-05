@@ -17,11 +17,11 @@ namespace GameAlgo
         }
         Mode _gameMode;
         List<Card> deck;
-        List<Card> _hand1;
-        List<Card> _hand2;
+        Player player1;
+        Player player2;//ШІ
 
-        public List<Card> Hand1 => _hand1;
-        public List<Card> Hand2 => _hand2;
+        public List<Card?> Hand1 => player1.Hand;
+        public List<Card?> Hand2 => player2.Hand;
 
         public GameAlgorithm(int mode)
         {
@@ -31,12 +31,12 @@ namespace GameAlgo
         private void InitiateGame()
         {
             deck = Card.GenerateDeck();
-            _hand1 = HandCards();
-            _hand2 = HandCards();
+            player1 = new Player(HandCards());
+            player2 = new Player(HandCards());            
         }
-        private List<Card> HandCards()
+        private List<Card?> HandCards()
         {
-            List<Card> hand = new List<Card>();
+            List<Card?> hand = new List<Card?>();
             Random rnd = new Random();
             int index;
             for (int i=0; i< CARDS_IN_HAND; i++)
@@ -47,5 +47,20 @@ namespace GameAlgo
             }
             return hand;
         }
+        public void AcceptMove(int? weaponIndex, int? armourIndex)
+        {
+            player1.BotWeaponIndex = weaponIndex;
+            player1.BotArmourIndex = armourIndex;
+        }
+        public void MakeMove(out int? weaponIndex, out int? armourIndex)
+        {
+            weaponIndex = player2.BotWeaponIndex;
+            armourIndex = player2.BotArmourIndex;
+        }
+        private int? EasyBotWeapon(Player player)
+        {
+            return player.FindMaxBlackCard();
+        }
+        
     }
 }
