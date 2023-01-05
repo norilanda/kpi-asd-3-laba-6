@@ -35,7 +35,7 @@
             // btnStartGame
             // 
             this.btnStartGame.Font = new System.Drawing.Font("SimSun-ExtB", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnStartGame.Image = global::laba6.Properties.Resources.start_game;
+            this.btnStartGame.Image = global::laba6.Properties.Resources.start_game1;
             this.btnStartGame.Location = new System.Drawing.Point(471, 143);
             this.btnStartGame.Name = "btnStartGame";
             this.btnStartGame.Size = new System.Drawing.Size(421, 119);

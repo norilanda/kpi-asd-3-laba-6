@@ -53,7 +53,8 @@ namespace laba6
         }
         public void FaceUp()
         {
-            _picture.Load(_fileName);
+            if (_fileName.Length > 0)
+                _picture.Load(_fileName);
         }
         public void FaceDown()
         {

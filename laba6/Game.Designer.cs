@@ -378,10 +378,10 @@
             // 
             this.btnPlayCards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnPlayCards.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPlayCards.Image = global::laba6.Properties.Resources.play_cards;
-            this.btnPlayCards.Location = new System.Drawing.Point(1100, 352);
+            this.btnPlayCards.Image = global::laba6.Properties.Resources.play_cards3;
+            this.btnPlayCards.Location = new System.Drawing.Point(1100, 391);
             this.btnPlayCards.Name = "btnPlayCards";
-            this.btnPlayCards.Size = new System.Drawing.Size(362, 114);
+            this.btnPlayCards.Size = new System.Drawing.Size(231, 75);
             this.btnPlayCards.TabIndex = 27;
             this.btnPlayCards.UseVisualStyleBackColor = true;
             this.btnPlayCards.Click += new System.EventHandler(this.btnPlayCards_Click);
@@ -390,11 +390,11 @@
             // 
             this.btnSkipMove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnSkipMove.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSkipMove.Image = global::laba6.Properties.Resources.skip_move;
             this.btnSkipMove.Location = new System.Drawing.Point(1100, 528);
             this.btnSkipMove.Name = "btnSkipMove";
-            this.btnSkipMove.Size = new System.Drawing.Size(175, 67);
+            this.btnSkipMove.Size = new System.Drawing.Size(231, 72);
             this.btnSkipMove.TabIndex = 28;
-            this.btnSkipMove.Text = "Skip Move";
             this.btnSkipMove.UseVisualStyleBackColor = true;
             this.btnSkipMove.Click += new System.EventHandler(this.btnSkipMove_Click);
             // 

@@ -113,6 +113,36 @@ namespace laba6.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap play_cards1 {
+            get {
+                object obj = ResourceManager.GetObject("play-cards1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_cards2 {
+            get {
+                object obj = ResourceManager.GetObject("play-cards2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_cards3 {
+            get {
+                object obj = ResourceManager.GetObject("play-cards3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap quite {
             get {
                 object obj = ResourceManager.GetObject("quite", resourceCulture);
@@ -123,9 +153,29 @@ namespace laba6.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap skip_move {
+            get {
+                object obj = ResourceManager.GetObject("skip-move", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap start_game {
             get {
                 object obj = ResourceManager.GetObject("start-game", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start_game1 {
+            get {
+                object obj = ResourceManager.GetObject("start-game1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -24,7 +24,7 @@ namespace laba6
 
         static System.Windows.Forms.Timer gameTimer = new System.Windows.Forms.Timer();
         static bool exitFlag = false;
-        int slowerSpeedInMs = 2500;
+        int slowerSpeedInMs = 1800;
         int fasterSpeedInMs = 1000;
 
         public Game(Form1 mainForm, int difficulty)
@@ -209,6 +209,18 @@ namespace laba6
 
         private void btnSkipMove_Click(object sender, EventArgs e)
         {
+            player1.ChosenWeaponCardIndex = null;
+            player1.ChosenArmourCardIndex = null;
+            gameAlgo.AcceptMove(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
+            int? armourIndex, weaponIndex;
+            
+            gameAlgo.CreateBot();
+            gameAlgo.MakeMove(out weaponIndex, out armourIndex);
+            player2.ChosenArmourCardIndex = armourIndex;
+            player2.ChosenWeaponCardIndex = weaponIndex;
+            SetTimer(fasterSpeedInMs);
+            player2.PlayBot();
+            this.btnPlayCards.Enabled = true;
 
         }
         private void hand1_card1_Click(object sender, EventArgs e)

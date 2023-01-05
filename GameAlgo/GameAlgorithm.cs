@@ -71,8 +71,14 @@ namespace GameAlgo
         {
             player1.BotWeaponIndex = weaponIndex;
             player1.BotArmourIndex = armourIndex;
-          
-            Response(player1.BotArmour);
+            if (weaponIndex == null)
+            {
+                SkipMove(1);
+                NewRound();
+            }
+                
+            else
+                Response(player1.BotArmour);
         }
         public void AcceptResponse(int? weaponIndex, int? armourIndex)
         {
