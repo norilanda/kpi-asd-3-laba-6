@@ -11,6 +11,7 @@ namespace GameAlgo
         List<Card?> _hand;
         int? _botWeaponIndex;
         int? _botArmourIndex;
+        int _score = 0;
         public List<Card?> Hand
         {
             get { return _hand; }
@@ -26,6 +27,11 @@ namespace GameAlgo
             get { return _botArmourIndex; }
             set { _botArmourIndex = value;}
         }
+        public int Score
+        {
+            get { return _score; }
+            set { _score = value; }
+        }
         public Player(List<Card?> hand)
         {
             this._hand = hand;
@@ -36,6 +42,22 @@ namespace GameAlgo
         {
             _hand[(int)_botArmourIndex] = null;
             _hand[(int)_botWeaponIndex] = null;
+        }
+        public void DealCards(List<Card> deck)
+        {
+            Random rnd = new Random();
+            int index;
+            for (int i = 0; i < _hand.Count; i++)
+            {
+                if (_hand[i] == null)
+                {
+                    if (deck.Count == 0)
+                        return;//
+                    index = rnd.Next(deck.Count);
+                    _hand[i] = deck[index];
+                    deck.RemoveAt(index);
+                }               
+            }
         }
 
         //FIND MIN OR MAX CARDS
@@ -48,7 +70,7 @@ namespace GameAlgo
                     continue;               
                 if (_hand[i].CardSuit == Card.Suit.diamonds || _hand[i].CardSuit == Card.Suit.hearts)
                 {
-                    if (minCardIndex == null || minCardIndex > (int)_hand[i].CardRank)
+                    if (minCardIndex == null || _hand[(int)minCardIndex].CardRank > _hand[i].CardRank)
                         minCardIndex = i;
                 }
             }
@@ -63,7 +85,7 @@ namespace GameAlgo
                     continue;
                 if (_hand[i].CardSuit == Card.Suit.clubs || _hand[i].CardSuit == Card.Suit.spades)
                 {
-                    if (minCardIndex == null || minCardIndex > (int)_hand[i].CardRank)
+                    if (minCardIndex == null || _hand[(int)minCardIndex].CardRank > _hand[i].CardRank)
                         minCardIndex = i;
                 }                
             }
@@ -78,7 +100,7 @@ namespace GameAlgo
                     continue;
                 if (_hand[i].CardSuit == Card.Suit.diamonds || _hand[i].CardSuit == Card.Suit.hearts)
                 {
-                    if (maxCardIndex == null || maxCardIndex < (int)_hand[i].CardRank)
+                    if (maxCardIndex == null || _hand[(int)maxCardIndex].CardRank < _hand[i].CardRank)
                         maxCardIndex = i;
                 }
             }
@@ -93,7 +115,7 @@ namespace GameAlgo
                     continue;
                 if (_hand[i].CardSuit == Card.Suit.clubs || _hand[i].CardSuit == Card.Suit.spades)
                 {
-                    if (maxCardIndex == null || maxCardIndex < (int)_hand[i].CardRank)
+                    if (maxCardIndex == null || _hand[(int)maxCardIndex].CardRank < _hand[i].CardRank)
                         maxCardIndex = i;
                 }
             }

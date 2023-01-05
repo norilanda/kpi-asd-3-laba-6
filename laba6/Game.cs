@@ -24,6 +24,8 @@ namespace laba6
 
         static System.Windows.Forms.Timer gameTimer = new System.Windows.Forms.Timer();
         static bool exitFlag = false;
+        int slowerSpeedInMs = 2500;
+        int fasterSpeedInMs = 1000;
 
         public Game(Form1 mainForm, int difficulty)
         {
@@ -57,7 +59,7 @@ namespace laba6
             for(int i=0;i< GameAlgorithm.CARDS_IN_HAND; i++)
             {
                 player1.Hand[i].FaceUp();
-                player2.Hand[i].FaceDown();                
+                player2.Hand[i].FaceUp();    //  FaceDown          
             }
         }
         private void InitializeCardsUI()
@@ -105,6 +107,13 @@ namespace laba6
             hand2PictureBox.Add(hand2_card9);
             hand2PictureBox.Add(hand2_card10);
         }
+        private void RefreshScores()
+        {
+            this.lblNumberDeadBots.Text = Convert.ToString(gameAlgo.DeadBotNumber);
+            this.lblPlayer1Score.Text = Convert.ToString(gameAlgo.Score1);
+            this.lblPlayer2Score.Text = Convert.ToString(gameAlgo.Score2);
+            this.lblRoundNumber.Text = Convert.ToString(gameAlgo.RoundNumber);
+        }
         
         private void btnPlayCards_Click(object sender, EventArgs e)
         {
@@ -124,21 +133,35 @@ namespace laba6
                     {
                         player2.ChosenArmourCardIndex = armourIndex;
                         player2.ChosenWeaponCardIndex = weaponIndex;
-                        SetTimer(1000);
+                        SetTimer(fasterSpeedInMs);
                         player2.PlayBot();
-                        SetTimer(2000);
-                        ClearBattleField();
+
+                        VisualizeCardsAfterBattle();
+
+                        gameAlgo.CreateBot();
+                        gameAlgo.MakeMove(out weaponIndex, out armourIndex);
+                        player2.ChosenArmourCardIndex = armourIndex;
+                        player2.ChosenWeaponCardIndex = weaponIndex;
+                        SetTimer(fasterSpeedInMs);
+                        player2.PlayBot();
+                        this.btnPlayCards.Enabled = true;
                     }
                     else
                     {
-                        /////
+                        gameAlgo.NewRound();
+                        VisualizeCardsAfterBattle();
+                        this.btnPlayCards.Enabled = true;
                     }
+                    RefreshScores();
                 }
                 else
                 {
                     if(player1.BeatBot(player2.ArmourCard.GetCard))
                     {
-                        /////////
+                        gameAlgo.AcceptResponse(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
+                        VisualizeCardsAfterBattle();
+                        RefreshScores();
+                        this.btnPlayCards.Enabled = true;
                     }
                     else
                     {
@@ -152,10 +175,41 @@ namespace laba6
                 MessageBox.Show("You haven't chosen cards!");
             }
         }
+        private void VisualizeCardsAfterBattle()
+        {
+            SetTimer(slowerSpeedInMs);
+            ClearBattleField();
+            SetTimer(slowerSpeedInMs);
+            DealNewCards();
+        }
         private void ClearBattleField()
         {
             player1.ClearBot();
             player2.ClearBot();
+        }
+        private void DealNewCards()
+        {
+            gameAlgo.DealCardsForPlayers();
+            for(int i=0; i< player1.Hand.Count;i++)
+            {
+                if (player1.Hand[i].IsEmpty)
+                {
+                    player1.Hand[i].AddCard(gameAlgo.Hand1[i]);
+                    player1.Hand[i].FaceUp();
+                }
+
+                if (player2.Hand[i].IsEmpty)
+                {
+                    player2.Hand[i].AddCard(gameAlgo.Hand2[i]);
+                    player2.Hand[i].FaceUp();//FaceDown
+                }
+            }
+            
+        }
+
+        private void btnSkipMove_Click(object sender, EventArgs e)
+        {
+
         }
         private void hand1_card1_Click(object sender, EventArgs e)
         {

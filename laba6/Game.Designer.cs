@@ -62,6 +62,8 @@
             this.lblRoundNumber = new System.Windows.Forms.Label();
             this.lblPlayer2Score = new System.Windows.Forms.Label();
             this.lblPlayer1Score = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblNumberDeadBots = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card4)).BeginInit();
@@ -394,12 +396,13 @@
             this.btnSkipMove.TabIndex = 28;
             this.btnSkipMove.Text = "Skip Move";
             this.btnSkipMove.UseVisualStyleBackColor = true;
+            this.btnSkipMove.Click += new System.EventHandler(this.btnSkipMove_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(136, 415);
+            this.label1.Location = new System.Drawing.Point(136, 428);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(196, 38);
             this.label1.TabIndex = 29;
@@ -409,7 +412,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(136, 504);
+            this.label2.Location = new System.Drawing.Point(136, 519);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(196, 38);
             this.label2.TabIndex = 30;
@@ -439,7 +442,7 @@
             // 
             this.lblPlayer2Score.AutoSize = true;
             this.lblPlayer2Score.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPlayer2Score.Location = new System.Drawing.Point(384, 415);
+            this.lblPlayer2Score.Location = new System.Drawing.Point(384, 428);
             this.lblPlayer2Score.Name = "lblPlayer2Score";
             this.lblPlayer2Score.Size = new System.Drawing.Size(32, 38);
             this.lblPlayer2Score.TabIndex = 33;
@@ -449,17 +452,39 @@
             // 
             this.lblPlayer1Score.AutoSize = true;
             this.lblPlayer1Score.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPlayer1Score.Location = new System.Drawing.Point(384, 504);
+            this.lblPlayer1Score.Location = new System.Drawing.Point(384, 519);
             this.lblPlayer1Score.Name = "lblPlayer1Score";
             this.lblPlayer1Score.Size = new System.Drawing.Size(32, 38);
             this.lblPlayer1Score.TabIndex = 34;
             this.lblPlayer1Score.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(136, 607);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(221, 76);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Number of dead\r\nbots in round";
+            // 
+            // lblNumberDeadBots
+            // 
+            this.lblNumberDeadBots.AutoSize = true;
+            this.lblNumberDeadBots.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNumberDeadBots.Location = new System.Drawing.Point(384, 630);
+            this.lblNumberDeadBots.Name = "lblNumberDeadBots";
+            this.lblNumberDeadBots.Size = new System.Drawing.Size(32, 38);
+            this.lblNumberDeadBots.TabIndex = 36;
+            this.lblNumberDeadBots.Text = "0";
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1895, 1003);
+            this.Controls.Add(this.lblNumberDeadBots);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblPlayer1Score);
             this.Controls.Add(this.lblPlayer2Score);
             this.Controls.Add(this.lblRoundNumber);
@@ -562,5 +587,7 @@
         private Label lblRoundNumber;
         private Label lblPlayer2Score;
         private Label lblPlayer1Score;
+        private Label label4;
+        private Label lblNumberDeadBots;
     }
 }
