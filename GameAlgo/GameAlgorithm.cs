@@ -121,9 +121,31 @@ namespace GameAlgo
                 case Mode.Easy:
                     {
                         player2.BotWeaponIndex = player2.EasyBotWeaponForBeating(cardToBeat);                        
-                        if (player2.BotWeaponIndex != null)
+                        if (player2.BotWeaponIndex != null)//if has a weapon to beat the enemy
                         {
                             player2.BotArmourIndex = player2.EasyBotArmour();
+                            if (player2.BotArmourIndex == null)
+                            {
+                                player2.UnchooseAllCards();
+                                SkipMove(2);
+                                NewRound();
+                            }
+                            else {
+                                _deadBotNumber++;
+                            }
+                        }
+                        else {
+                            SkipMove(2);
+                            NewRound();
+                        }
+                        break;
+                    }
+                case Mode.Medium:
+                    {
+                        player2.BotWeaponIndex = player2.FindMinBlackCard(cardToBeat);
+                        if (player2.BotWeaponIndex != null)//if has a weapon to beat the enemy
+                        {
+                            player2.BotArmourIndex = player2.FindMinRedCard();
                             if (player2.BotArmourIndex == null)
                             {
                                 player2.UnchooseAllCards();
@@ -138,11 +160,8 @@ namespace GameAlgo
                         else
                         {
                             SkipMove(2);
+                            NewRound();
                         }
-                        break;
-                    }
-                case Mode.Medium:
-                    {
                         break;
                     }
                 case Mode.Difficult:
@@ -159,7 +178,7 @@ namespace GameAlgo
                 case Mode.Easy:
                     {
                         player2.BotWeaponIndex = player2.EasyBotWeaponForCreation();
-                        if (player2.BotWeaponIndex != null)
+                        if (player2.BotWeaponIndex != null)//if there is a black card
                         {
                             player2.BotArmourIndex = player2.EasyBotArmour();
                             if (player2.BotArmourIndex == null)
@@ -169,6 +188,13 @@ namespace GameAlgo
                     }
                 case Mode.Medium:
                     {
+                        player2.BotWeaponIndex = player2.FindMinBlackCard(null);
+                        if (player2.BotWeaponIndex != null)//if there is a black card
+                        {
+                            player2.BotArmourIndex = player2.MediumBotArmour(this._deadBotNumber);
+                            if (player2.BotArmourIndex == null)
+                                player2.UnchooseAllCards();
+                        }
                         break;
                     }
                 case Mode.Difficult:

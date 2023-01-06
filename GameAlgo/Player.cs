@@ -38,8 +38,10 @@ namespace GameAlgo
         }
         public Card BotWeapon => (Card)_hand[(int)_botWeaponIndex];
         public Card BotArmour => (Card)_hand[(int)BotArmourIndex];
-        public void DeleteCardsAfterMove()
+        public void DeleteCardsAfterMove()//
         {
+            if (_botArmourIndex == null || _botWeaponIndex == null)
+                return;
             _hand[(int)_botArmourIndex] = null;
             _hand[(int)_botWeaponIndex] = null;
         }
@@ -81,7 +83,7 @@ namespace GameAlgo
             }
             return minCardIndex;
         }
-        public int? FindMinBlackCard()
+        public int? FindMinBlackCard(Card? cardToBeat )
         {
             int? minCardIndex = null;
             for (int i = 0; i < _hand.Count; i++)
@@ -91,7 +93,10 @@ namespace GameAlgo
                 if (_hand[i].CardSuit == Card.Suit.clubs || _hand[i].CardSuit == Card.Suit.spades)
                 {
                     if (minCardIndex == null || _hand[(int)minCardIndex].CardRank > _hand[i].CardRank)
-                        minCardIndex = i;
+                    {
+                        if (cardToBeat==null || _hand[i].CardRank >= cardToBeat.CardRank)
+                            minCardIndex = i;                       
+                    }                        
                 }                
             }
             return minCardIndex;
@@ -126,6 +131,27 @@ namespace GameAlgo
             }
             return maxCardIndex;
         }
+        private int? FindBeforeMaxRedCard(int numberBeforeMax)
+        {
+            List<(Card c, int ind)> redCardIndexes= new List<(Card, int)>();
+            int? maxCardIndex = null;
+            for (int i = 0; i < _hand.Count; i++)
+            {
+                if (_hand[i] == null)
+                    continue;
+                if (_hand[i].CardSuit == Card.Suit.diamonds || _hand[i].CardSuit == Card.Suit.hearts)
+                {
+                    redCardIndexes.Add((_hand[i], i));                                     
+                }
+            }
+            if (redCardIndexes.Count == 0)//if there is no red cards
+                return null;
+            redCardIndexes.OrderBy(x => x.c.CardSuit).ToList();
+            int resultIndex = redCardIndexes.Count - numberBeforeMax - 1;
+            if (resultIndex < 0 || resultIndex >= redCardIndexes.Count)
+                resultIndex = redCardIndexes.Count-1;
+            return redCardIndexes[resultIndex].ind;
+        }
 
         //EASY LEVEL
         public int? EasyBotWeaponForCreation()
@@ -153,6 +179,14 @@ namespace GameAlgo
                 return null;
             Random rnd = new Random();
             return redCardsIndexes[rnd.Next(redCardsIndexes.Count)];
+        }
+
+        //MEDIUM
+        public int? MediumBotArmour(int deadBotNumber)
+        {
+            if(deadBotNumber > 1)
+                return FindMaxRedCard();
+            return FindBeforeMaxRedCard(1);
         }
     }
 }
