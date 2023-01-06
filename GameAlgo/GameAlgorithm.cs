@@ -116,58 +116,49 @@ namespace GameAlgo
         }
         private void Response(Card cardToBeat)
         {
-            switch (_gameMode)
+            if (_gameMode == Mode.Easy)
+            {              
+                player2.BotWeaponIndex = player2.EasyBotWeaponForBeating(cardToBeat);                        
+                if (player2.BotWeaponIndex != null)//if has a weapon to beat the enemy
+                {
+                    player2.BotArmourIndex = player2.EasyBotArmour();
+                    if (player2.BotArmourIndex == null)
+                    {
+                        player2.UnchooseAllCards();
+                        SkipMove(2);
+                        NewRound();
+                    }
+                    else {
+                        _deadBotNumber++;
+                    }
+                }
+                else {
+                    SkipMove(2);
+                    NewRound();
+                }                    
+            }
+            else//if Mode.Medium or Mode.Difficult
             {
-                case Mode.Easy:
+                player2.BotWeaponIndex = player2.FindMinBlackCard(cardToBeat);
+                if (player2.BotWeaponIndex != null)//if has a weapon to beat the enemy
+                {
+                    player2.BotArmourIndex = player2.FindMinRedCard();
+                    if (player2.BotArmourIndex == null)
                     {
-                        player2.BotWeaponIndex = player2.EasyBotWeaponForBeating(cardToBeat);                        
-                        if (player2.BotWeaponIndex != null)//if has a weapon to beat the enemy
-                        {
-                            player2.BotArmourIndex = player2.EasyBotArmour();
-                            if (player2.BotArmourIndex == null)
-                            {
-                                player2.UnchooseAllCards();
-                                SkipMove(2);
-                                NewRound();
-                            }
-                            else {
-                                _deadBotNumber++;
-                            }
-                        }
-                        else {
-                            SkipMove(2);
-                            NewRound();
-                        }
-                        break;
+                        player2.UnchooseAllCards();
+                        SkipMove(2);
+                        NewRound();
                     }
-                case Mode.Medium:
+                    else
                     {
-                        player2.BotWeaponIndex = player2.FindMinBlackCard(cardToBeat);
-                        if (player2.BotWeaponIndex != null)//if has a weapon to beat the enemy
-                        {
-                            player2.BotArmourIndex = player2.FindMinRedCard();
-                            if (player2.BotArmourIndex == null)
-                            {
-                                player2.UnchooseAllCards();
-                                SkipMove(2);
-                                NewRound();
-                            }
-                            else
-                            {
-                                _deadBotNumber++;
-                            }
-                        }
-                        else
-                        {
-                            SkipMove(2);
-                            NewRound();
-                        }
-                        break;
+                        _deadBotNumber++;
                     }
-                case Mode.Difficult:
-                    {
-                        break;
-                    }
+                }
+                else
+                {
+                    SkipMove(2);
+                    NewRound();
+                } 
             }
             player1.DeleteCardsAfterMove();
         }
@@ -199,6 +190,13 @@ namespace GameAlgo
                     }
                 case Mode.Difficult:
                     {
+                        player2.BotWeaponIndex = player2.FindMinBlackCard(null);
+                        if (player2.BotWeaponIndex != null)//if there is a black card
+                        {
+                            player2.BotArmourIndex = player2.minMax(this._deadBotNumber, player1.Score, BOT_NUMBER_TO_WIN);
+                            if (player2.BotArmourIndex == null)
+                                player2.UnchooseAllCards();
+                        }
                         break;
                     }
             }

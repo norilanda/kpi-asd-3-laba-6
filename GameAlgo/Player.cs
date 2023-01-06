@@ -75,7 +75,7 @@ namespace GameAlgo
             {
                 if (_hand[i] == null)
                     continue;               
-                if (_hand[i].CardSuit == Card.Suit.diamonds || _hand[i].CardSuit == Card.Suit.hearts)
+                if (_hand[i].IsRed())
                 {
                     if (minCardIndex == null || _hand[(int)minCardIndex].CardRank > _hand[i].CardRank)
                         minCardIndex = i;
@@ -90,7 +90,7 @@ namespace GameAlgo
             {
                 if (_hand[i] == null)
                     continue;
-                if (_hand[i].CardSuit == Card.Suit.clubs || _hand[i].CardSuit == Card.Suit.spades)
+                if (_hand[i].IsBlack())
                 {
                     if (minCardIndex == null || _hand[(int)minCardIndex].CardRank > _hand[i].CardRank)
                     {
@@ -108,7 +108,7 @@ namespace GameAlgo
             {
                 if (_hand[i] == null)
                     continue;
-                if (_hand[i].CardSuit == Card.Suit.diamonds || _hand[i].CardSuit == Card.Suit.hearts)
+                if (_hand[i].IsRed())
                 {
                     if (maxCardIndex == null || _hand[(int)maxCardIndex].CardRank < _hand[i].CardRank)
                         maxCardIndex = i;
@@ -123,7 +123,7 @@ namespace GameAlgo
             {
                 if (_hand[i] == null)
                     continue;
-                if (_hand[i].CardSuit == Card.Suit.clubs || _hand[i].CardSuit == Card.Suit.spades)
+                if (_hand[i].IsBlack())
                 {
                     if (maxCardIndex == null || _hand[(int)maxCardIndex].CardRank < _hand[i].CardRank)
                         maxCardIndex = i;
@@ -139,7 +139,7 @@ namespace GameAlgo
             {
                 if (_hand[i] == null)
                     continue;
-                if (_hand[i].CardSuit == Card.Suit.diamonds || _hand[i].CardSuit == Card.Suit.hearts)
+                if (_hand[i].IsRed())
                 {
                     redCardIndexes.Add((_hand[i], i));                                     
                 }
@@ -172,7 +172,7 @@ namespace GameAlgo
             {
                 if (_hand[i] == null)
                     continue;
-                if (_hand[i].CardSuit == Card.Suit.diamonds || _hand[i].CardSuit == Card.Suit.hearts)
+                if (_hand[i].IsRed())
                     redCardsIndexes.Add(i);
             }
             if (redCardsIndexes.Count == 0)
@@ -187,6 +187,75 @@ namespace GameAlgo
             if(deadBotNumber > 1)
                 return FindMaxRedCard();
             return FindBeforeMaxRedCard(1);
+        }
+
+        //HARD
+        public int? minMax(int deadBotNumber, int enemyScore, int BOT_NUMBER_TO_WIN)
+        {
+             if(enemyScore > _score || enemyScore + deadBotNumber >= BOT_NUMBER_TO_WIN || deadBotNumber > 2)
+            {
+                if (deadBotNumber > 0)//if there are dead bots
+                    return FindMaxRedCard();
+                return FindMinRedCard();
+            }
+            else
+            {
+                int bigNum, smallNum;
+                CountBigAndSmallCards(out bigNum, out smallNum);
+                if (bigNum > 2)
+                {
+                    if(deadBotNumber > 0)
+                    {
+                        int? redMinIndex = FindMinRedCard();
+                        int? blackMaxIndex = FindMaxBlackCard();
+                        if ((redMinIndex != null && (int)_hand[(int)redMinIndex].CardRank < 10) || CountWeapon() <= 3
+                            || (blackMaxIndex != null && (int)_hand[(int)blackMaxIndex].CardRank >= 10))
+                            return FindMaxRedCard();
+                        else
+                            return FindBeforeMaxRedCard(1);
+                    }
+                    else
+                    {
+                        Random rnd = new Random();
+                        if(rnd.Next(2) == 0)
+                            return FindBeforeMaxRedCard(1);
+                        else
+                            return FindBeforeMaxRedCard(2);
+                    }
+                }
+                else
+                {
+                    if ((smallNum > 3 && deadBotNumber > 0 && bigNum > 0) || CountWeapon() > smallNum + bigNum)
+                        return FindMaxRedCard();
+                    return FindMinRedCard();
+                }
+            }
+        }
+        private void CountBigAndSmallCards(out int bigNum, out int smallNum)
+        {
+            const int BIG_CARD_RANK = 10;
+            bigNum = 0;
+            smallNum = 0;
+            for (int i=0; i< _hand.Count; i++)
+            {
+                if (_hand[i] != null && _hand[i].IsRed())
+                {
+                    if ((int)_hand[i].CardRank >= BIG_CARD_RANK)
+                        bigNum++;
+                    else
+                        smallNum++;
+                }
+            }
+        }
+        private int CountWeapon()
+        {
+            int n = 0;
+            for(int i = 0; i< _hand.Count; i++)
+            {
+                if (_hand[i].IsBlack())
+                    n++;
+            }
+            return n;
         }
     }
 }

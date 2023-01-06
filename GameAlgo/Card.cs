@@ -44,6 +44,18 @@ namespace GameAlgo
             deck.Add(new Card(Suit.clubs, Rank.Joker));
             return deck;
         }
+        public bool IsRed()
+        {
+            if (_cardSuit == Suit.diamonds || _cardSuit == Suit.hearts)
+                return true;
+            return false;
+        }
+        public bool IsBlack()
+        {
+            if (_cardSuit == Suit.clubs || _cardSuit == Suit.spades)
+                return true;
+            return false;
+        }
     }
     
 }
