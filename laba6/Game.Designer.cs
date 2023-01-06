@@ -65,6 +65,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblNumberDeadBots = new System.Windows.Forms.Label();
             this.lblPlayersTurns = new System.Windows.Forms.Label();
+            this.lblGameOver = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card4)).BeginInit();
@@ -482,18 +483,29 @@
             // lblPlayersTurns
             // 
             this.lblPlayersTurns.AutoSize = true;
-            this.lblPlayersTurns.Font = new System.Drawing.Font("Yu Gothic UI", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPlayersTurns.Location = new System.Drawing.Point(1272, 541);
+            this.lblPlayersTurns.Font = new System.Drawing.Font("Segoe Script", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPlayersTurns.Location = new System.Drawing.Point(1180, 528);
             this.lblPlayersTurns.Name = "lblPlayersTurns";
-            this.lblPlayersTurns.Size = new System.Drawing.Size(184, 50);
+            this.lblPlayersTurns.Size = new System.Drawing.Size(375, 95);
             this.lblPlayersTurns.TabIndex = 37;
             this.lblPlayersTurns.Text = "Your turn!";
+            // 
+            // lblGameOver
+            // 
+            this.lblGameOver.AutoSize = true;
+            this.lblGameOver.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblGameOver.Location = new System.Drawing.Point(645, 469);
+            this.lblGameOver.Name = "lblGameOver";
+            this.lblGameOver.Size = new System.Drawing.Size(194, 44);
+            this.lblGameOver.TabIndex = 38;
+            this.lblGameOver.Text = "Game Over!";
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1895, 1003);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.Controls.Add(this.lblGameOver);
             this.Controls.Add(this.lblPlayersTurns);
             this.Controls.Add(this.lblNumberDeadBots);
             this.Controls.Add(this.label4);
@@ -602,5 +614,6 @@
         private Label label4;
         private Label lblNumberDeadBots;
         private Label lblPlayersTurns;
+        private Label lblGameOver;
     }
 }

@@ -34,12 +34,19 @@ namespace laba6
             this.WindowState = FormWindowState.Maximized;
             this.FormClosing += new FormClosingEventHandler(Game_FormClosing);
             CardUI.unchosenBackColor = this.BackColor;
+            this.lblGameOver.Text = "";
 
             this.gameAlgo = new GameAlgorithm(difficulty);
 
             AddPictureBoxToArray();
             InitializeCardsUI();
             LoadCards();
+        }
+        private void InintResults()
+        {
+            Results resultsForm = new Results(gameAlgo.Score1, gameAlgo.Score2, gameAlgo.RoundNumber-1);
+            resultsForm.Show();
+            this.Hide();
         }
         void Game_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -146,16 +153,17 @@ namespace laba6
                         player2.ChosenArmourCardIndex = armourIndex;
                         player2.ChosenWeaponCardIndex = weaponIndex;
                         SetTimer(fasterSpeedInMs);
-                        player2.PlayBot();                        
+                        player2.PlayBot();
+                        RefreshScores();
                     }
                     else
-                    {
+                    {                        
                         gameAlgo.NewRound();
                         NewRound();                       
                     }
                     this.btnPlayCards.Enabled = true;
                     this.lblPlayersTurns.Text = "Your turn!";
-                    RefreshScores();
+                   
                 }
                 else
                 {
@@ -222,11 +230,18 @@ namespace laba6
         }
         private void NewRound()
         {
+            RefreshScores();          
             SetTimer(fasterSpeedInMs);
             ClearBattleField();
+            if (gameAlgo.Score1 >= GameAlgorithm.BOT_NUMBER_TO_WIN || gameAlgo.Score2 >= GameAlgorithm.BOT_NUMBER_TO_WIN)
+            {
+                this.lblGameOver.Text = "Game over!";
+                this.lblGameOver.Font = new Font("Segoe Script", 36);
+                SetTimer(slowerSpeedInMs+400);
+                InintResults();
+            }
             SetTimer(slowerSpeedInMs);
             RenewCardsForNewRound();
-            RefreshScores();
         }
         private void btnSkipMove_Click(object sender, EventArgs e)
         {
