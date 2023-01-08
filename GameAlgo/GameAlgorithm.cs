@@ -9,7 +9,7 @@ namespace GameAlgo
     public class GameAlgorithm
     {
         public const int CARDS_IN_HAND = 10;
-        public const int BOT_NUMBER_TO_WIN = 5;
+        public const int BOT_NUMBER_TO_WIN = 10;
         public enum Mode
         {
             Easy,

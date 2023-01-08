@@ -100,7 +100,7 @@
             this.Controls.Add(this.btnMedium);
             this.Controls.Add(this.btnEasy);
             this.Name = "ChooseDifficulty";
-            this.Text = "ChooseDifficulty";
+            this.Text = "Skrap";
             this.ResumeLayout(false);
             this.PerformLayout();
 

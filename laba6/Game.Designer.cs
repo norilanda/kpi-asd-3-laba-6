@@ -530,7 +530,7 @@
             this.Controls.Add(this.hand1_card2);
             this.Controls.Add(this.hand1_card1);
             this.Name = "Game";
-            this.Text = "Game";
+            this.Text = "Skrap";
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card4)).EndInit();
