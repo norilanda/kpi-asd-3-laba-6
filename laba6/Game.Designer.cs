@@ -403,80 +403,80 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(136, 428);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 38);
+            this.label1.Size = new System.Drawing.Size(239, 44);
             this.label1.TabIndex = 29;
             this.label1.Text = "Player 2 score:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(136, 519);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(196, 38);
+            this.label2.Size = new System.Drawing.Size(239, 44);
             this.label2.TabIndex = 30;
             this.label2.Text = "Player 1 score:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(136, 342);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(209, 38);
+            this.label3.Size = new System.Drawing.Size(259, 44);
             this.label3.TabIndex = 31;
             this.label3.Text = "Round number:";
             // 
             // lblRoundNumber
             // 
             this.lblRoundNumber.AutoSize = true;
-            this.lblRoundNumber.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblRoundNumber.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblRoundNumber.Location = new System.Drawing.Point(384, 342);
             this.lblRoundNumber.Name = "lblRoundNumber";
-            this.lblRoundNumber.Size = new System.Drawing.Size(32, 38);
+            this.lblRoundNumber.Size = new System.Drawing.Size(39, 44);
             this.lblRoundNumber.TabIndex = 32;
             this.lblRoundNumber.Text = "1";
             // 
             // lblPlayer2Score
             // 
             this.lblPlayer2Score.AutoSize = true;
-            this.lblPlayer2Score.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPlayer2Score.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPlayer2Score.Location = new System.Drawing.Point(384, 428);
             this.lblPlayer2Score.Name = "lblPlayer2Score";
-            this.lblPlayer2Score.Size = new System.Drawing.Size(32, 38);
+            this.lblPlayer2Score.Size = new System.Drawing.Size(39, 44);
             this.lblPlayer2Score.TabIndex = 33;
             this.lblPlayer2Score.Text = "0";
             // 
             // lblPlayer1Score
             // 
             this.lblPlayer1Score.AutoSize = true;
-            this.lblPlayer1Score.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPlayer1Score.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPlayer1Score.Location = new System.Drawing.Point(384, 519);
             this.lblPlayer1Score.Name = "lblPlayer1Score";
-            this.lblPlayer1Score.Size = new System.Drawing.Size(32, 38);
+            this.lblPlayer1Score.Size = new System.Drawing.Size(39, 44);
             this.lblPlayer1Score.TabIndex = 34;
             this.lblPlayer1Score.Text = "0";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(136, 607);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(221, 76);
+            this.label4.Size = new System.Drawing.Size(261, 88);
             this.label4.TabIndex = 35;
             this.label4.Text = "Number of dead\r\nbots in round";
             // 
             // lblNumberDeadBots
             // 
             this.lblNumberDeadBots.AutoSize = true;
-            this.lblNumberDeadBots.Font = new System.Drawing.Font("Yu Gothic UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNumberDeadBots.Font = new System.Drawing.Font("Segoe Script", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblNumberDeadBots.Location = new System.Drawing.Point(384, 630);
             this.lblNumberDeadBots.Name = "lblNumberDeadBots";
-            this.lblNumberDeadBots.Size = new System.Drawing.Size(32, 38);
+            this.lblNumberDeadBots.Size = new System.Drawing.Size(39, 44);
             this.lblNumberDeadBots.TabIndex = 36;
             this.lblNumberDeadBots.Text = "0";
             // 

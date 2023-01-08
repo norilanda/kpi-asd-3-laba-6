@@ -35,6 +35,7 @@
             this.lblScore2 = new System.Windows.Forms.Label();
             this.lblRoundNumber = new System.Windows.Forms.Label();
             this.lblPlayerWins = new System.Windows.Forms.Label();
+            this.btnMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -107,11 +108,23 @@
             this.lblPlayerWins.TabIndex = 6;
             this.lblPlayerWins.Text = "Player wins!";
             // 
+            // btnMenu
+            // 
+            this.btnMenu.Font = new System.Drawing.Font("SimSun-ExtB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnMenu.Image = global::laba6.Properties.Resources.back_to_menu;
+            this.btnMenu.Location = new System.Drawing.Point(519, 531);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(281, 109);
+            this.btnMenu.TabIndex = 7;
+            this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
+            // 
             // Results
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1278, 645);
+            this.ClientSize = new System.Drawing.Size(1307, 741);
+            this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.lblPlayerWins);
             this.Controls.Add(this.lblRoundNumber);
             this.Controls.Add(this.lblScore2);
@@ -135,5 +148,6 @@
         private Label lblScore2;
         private Label lblRoundNumber;
         private Label lblPlayerWins;
+        private Button btnMenu;
     }
 }

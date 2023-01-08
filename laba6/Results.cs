@@ -12,9 +12,13 @@ namespace laba6
 {
     public partial class Results : Form
     {
-        public Results(int score1, int score2, int RoundNumber)
+        Form1 mainForm;
+        Game gameForm;
+        public Results(Form1 mainForm, Game gameForm, int score1, int score2, int RoundNumber)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
+            this.gameForm = gameForm;
             this.FormClosing += new FormClosingEventHandler(Results_FormClosing);
             DisplayResults(score1, score2, RoundNumber);
         }
@@ -31,6 +35,14 @@ namespace laba6
             this.lblScore1.Text = Convert.ToString(score1);
             this.lblScore2.Text = Convert.ToString(score2);
             this.lblRoundNumber.Text = Convert.ToString(RoundNumber);
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            //mainForm.Show();
+            //this.Hide();
+            this.Close();
+
         }
     }
 }

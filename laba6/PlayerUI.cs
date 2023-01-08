@@ -90,7 +90,11 @@ namespace laba6
         public void UnchooseAllCards()
         {
             _weaponCard.MarkUnchosen();
-            _armourCard.MarkUnchosen();
+            _armourCard.MarkUnchosen();//?
+            if (_chosenWeaponCardIndex != null)
+                _hand[(int)_chosenWeaponCardIndex].MarkUnchosen();
+            if (_chosenArmourCardIndex != null)
+                _hand[(int)_chosenArmourCardIndex].MarkUnchosen();
             _chosenWeaponCardIndex = null;
             _chosenArmourCardIndex = null;
         }

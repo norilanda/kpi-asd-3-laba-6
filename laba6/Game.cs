@@ -44,7 +44,7 @@ namespace laba6
         }
         private void InintResults()
         {
-            Results resultsForm = new Results(gameAlgo.Score1, gameAlgo.Score2, gameAlgo.RoundNumber-1);
+            Results resultsForm = new Results(mainForm, this, gameAlgo.Score1, gameAlgo.Score2, gameAlgo.RoundNumber-1);
             resultsForm.Show();
             this.Hide();
         }
