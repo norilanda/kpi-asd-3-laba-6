@@ -35,12 +35,48 @@ namespace laba6
             this.FormClosing += new FormClosingEventHandler(Game_FormClosing);
             CardUI.unchosenBackColor = this.BackColor;
             this.lblGameOver.Text = "";
+            this.lblPlayersTurns.Text = "";
 
             this.gameAlgo = new GameAlgorithm(difficulty);
 
+            this.btnPlayCards.Enabled= false;
+            this.btnSkipMove.Enabled= false;
             AddPictureBoxToArray();
             InitializeCardsUI();
-            LoadCards();
+            LoadCards();                      
+        }
+        private void btnStartGame_Click(object sender, EventArgs e)
+        {
+            int playerWhoStarts = ChoosePlayerWhoStarts();
+            if (playerWhoStarts == 2)
+            {
+                this.lblGameOver.Text = "Player 2 starts!";
+                this.lblGameOver.Font = new Font("Segoe Script", 36);
+                this.btnPlayCards.Enabled = false;
+                SetTimer(slowerSpeedInMs);
+                this.lblGameOver.Text = "";
+                this.lblGameOver.Font = new Font("Segoe Script", 10);              
+                playBotPlayer2();
+            }
+            else
+            {
+                this.lblGameOver.Text = "You start!";
+                this.lblGameOver.Font = new Font("Segoe Script", 36);
+                SetTimer(slowerSpeedInMs);
+                this.lblGameOver.Text = "";
+                this.lblGameOver.Font = new Font("Segoe Script", 10);
+                this.lblPlayersTurns.Text = "Your turn!";
+            }
+            this.btnStartGame.Enabled = false;
+            this.btnStartGame.Visible = false;
+        }
+
+        private int ChoosePlayerWhoStarts()
+        {
+            Random rnd = new Random();
+            int playerWhoStarts;
+            playerWhoStarts = rnd.Next(1, 3);
+            return playerWhoStarts;
         }
         private void InintResults()
         {
@@ -52,7 +88,11 @@ namespace laba6
         {
             Application.Exit();
         }
-
+        private bool NeedToEnableSkipMove()
+        {
+            //if()
+            return true;
+        }
         private void btnExit_Click(object sender, EventArgs e)
         {
             mainForm.Show();
@@ -148,13 +188,14 @@ namespace laba6
                         //відбій
                         VisualizeCardsAfterBattle();
                         //a-i moves forward
-                        gameAlgo.CreateBot();
-                        gameAlgo.MakeMove(out weaponIndex, out armourIndex);
-                        player2.ChosenArmourCardIndex = armourIndex;
-                        player2.ChosenWeaponCardIndex = weaponIndex;
-                        SetTimer(fasterSpeedInMs);
-                        player2.PlayBot();
-                        RefreshScores();
+                        playBotPlayer2();
+                        //gameAlgo.CreateBot();
+                        //gameAlgo.MakeMove(out weaponIndex, out armourIndex);
+                        //player2.ChosenArmourCardIndex = armourIndex;
+                        //player2.ChosenWeaponCardIndex = weaponIndex;
+                        //SetTimer(fasterSpeedInMs);
+                        //player2.PlayBot();
+                        //RefreshScores();
                     }
                     else
                     {                        
@@ -185,6 +226,23 @@ namespace laba6
             {
                 MessageBox.Show("You haven't chosen cards!");
             }
+        }
+        private void playBotPlayer2()
+        {
+            int? armourIndex, weaponIndex;
+            //a-i moves forward
+            gameAlgo.CreateBot();
+            gameAlgo.MakeMove(out weaponIndex, out armourIndex);
+            if(weaponIndex!=null)
+            {
+                player2.ChosenArmourCardIndex = armourIndex;
+                player2.ChosenWeaponCardIndex = weaponIndex;
+                SetTimer(fasterSpeedInMs);
+                player2.PlayBot();
+            }          
+            RefreshScores();
+            this.btnPlayCards.Enabled = true;
+            this.lblPlayersTurns.Text = "Your turn!";
         }
         private void VisualizeCardsAfterBattle()
         {
@@ -329,5 +387,6 @@ namespace laba6
             exitFlag = true;
         }
 
+       
     }
 }

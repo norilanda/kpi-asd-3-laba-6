@@ -200,6 +200,11 @@ namespace GameAlgo
                         break;
                     }
             }
+            if (player2.BotWeaponIndex == null)
+            {
+                SkipMove(2);
+                NewRound();
+            }
         }
      
         public void DealCardsForPlayers()
