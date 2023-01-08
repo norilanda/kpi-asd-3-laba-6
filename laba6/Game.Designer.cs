@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnExit = new System.Windows.Forms.Button();
             this.hand1_card1 = new System.Windows.Forms.PictureBox();
             this.hand1_card2 = new System.Windows.Forms.PictureBox();
             this.hand1_card4 = new System.Windows.Forms.PictureBox();
@@ -66,7 +65,6 @@
             this.lblNumberDeadBots = new System.Windows.Forms.Label();
             this.lblPlayersTurns = new System.Windows.Forms.Label();
             this.lblGameOver = new System.Windows.Forms.Label();
-            this.btnStartGame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card4)).BeginInit();
@@ -93,18 +91,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.player1_weapon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card8)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnExit.Font = new System.Drawing.Font("Sitka Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.Location = new System.Drawing.Point(1708, 12);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(175, 67);
-            this.btnExit.TabIndex = 0;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // hand1_card1
             // 
@@ -501,23 +487,11 @@
             this.lblGameOver.TabIndex = 38;
             this.lblGameOver.Text = "Game Over!";
             // 
-            // btnStartGame
-            // 
-            this.btnStartGame.Font = new System.Drawing.Font("SimSun-ExtB", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnStartGame.Image = global::laba6.Properties.Resources.start_game1;
-            this.btnStartGame.Location = new System.Drawing.Point(1152, 626);
-            this.btnStartGame.Name = "btnStartGame";
-            this.btnStartGame.Size = new System.Drawing.Size(421, 119);
-            this.btnStartGame.TabIndex = 39;
-            this.btnStartGame.UseVisualStyleBackColor = true;
-            this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
-            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1902, 1033);
-            this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.lblGameOver);
             this.Controls.Add(this.lblPlayersTurns);
             this.Controls.Add(this.lblNumberDeadBots);
@@ -555,7 +529,6 @@
             this.Controls.Add(this.hand1_card3);
             this.Controls.Add(this.hand1_card2);
             this.Controls.Add(this.hand1_card1);
-            this.Controls.Add(this.btnExit);
             this.Name = "Game";
             this.Text = "Game";
             ((System.ComponentModel.ISupportInitialize)(this.hand1_card1)).EndInit();
@@ -589,8 +562,6 @@
         }
 
         #endregion
-
-        private Button btnExit;
         private PictureBox hand1_card1;
         private PictureBox hand1_card2;
         private PictureBox hand1_card4;
@@ -628,6 +599,5 @@
         private Label lblNumberDeadBots;
         private Label lblPlayersTurns;
         private Label lblGameOver;
-        private Button btnStartGame;
     }
 }

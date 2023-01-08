@@ -50,6 +50,24 @@ namespace GameAlgo
             _botArmourIndex = null;
             _botWeaponIndex = null;
         }
+        public bool hasArmour()
+        {
+            for(int i=0; i< _hand.Count; i++)
+            {
+                if (_hand[i] != null && _hand[i].IsRed())
+                    return true;
+            }
+            return false;
+        }
+        public bool hasWeapon()
+        {
+            for (int i = 0; i < _hand.Count; i++)
+            {
+                if (_hand[i] != null && _hand[i].IsBlack())
+                    return true;
+            }
+            return false;
+        }
         public void DealCards(List<Card> deck)
         {
             Random rnd = new Random();
@@ -151,6 +169,17 @@ namespace GameAlgo
             if (resultIndex < 0 || resultIndex >= redCardIndexes.Count)
                 resultIndex = redCardIndexes.Count-1;
             return redCardIndexes[resultIndex].ind;
+        }
+        public int FindMaxCard()
+        {
+            int maxCardIndex = 0;
+            for (int i=0;i< _hand.Count;i++)
+            {
+                if (_hand[i] == null) continue;
+                if (_hand[i].CardRank > _hand[maxCardIndex].CardRank)
+                    maxCardIndex = i;
+            }
+            return maxCardIndex;
         }
 
         //EASY LEVEL
@@ -256,6 +285,14 @@ namespace GameAlgo
                     n++;
             }
             return n;
+        }
+        //OTHER METHODS
+        public bool CanBeatBot(Card card)
+        {
+            int? blackCardIndex = FindMinBlackCard(card);
+            if (blackCardIndex == null)
+                return false;
+            else return true;
         }
     }
 }

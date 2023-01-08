@@ -36,13 +36,5 @@ namespace laba6
             this.lblScore2.Text = Convert.ToString(score2);
             this.lblRoundNumber.Text = Convert.ToString(RoundNumber);
         }
-
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            //mainForm.Show();
-            //this.Hide();
-            this.Close();
-
-        }
     }
 }

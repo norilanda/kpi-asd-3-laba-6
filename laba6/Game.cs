@@ -26,6 +26,7 @@ namespace laba6
         static bool exitFlag = false;
         int slowerSpeedInMs = 1700;
         int fasterSpeedInMs = 1000;
+        int stage = 0;//0-choosing the first player, 1-playing game
 
         public Game(Form1 mainForm, int difficulty)
         {
@@ -39,15 +40,15 @@ namespace laba6
 
             this.gameAlgo = new GameAlgorithm(difficulty);
 
-            this.btnPlayCards.Enabled= false;
             this.btnSkipMove.Enabled= false;
             AddPictureBoxToArray();
             InitializeCardsUI();
             LoadCards();                      
-        }
-        private void btnStartGame_Click(object sender, EventArgs e)
+        }        
+        private void StartGame()
         {
             int playerWhoStarts = ChoosePlayerWhoStarts();
+          
             if (playerWhoStarts == 2)
             {
                 this.lblGameOver.Text = "Player 2 starts!";
@@ -55,7 +56,7 @@ namespace laba6
                 this.btnPlayCards.Enabled = false;
                 SetTimer(slowerSpeedInMs);
                 this.lblGameOver.Text = "";
-                this.lblGameOver.Font = new Font("Segoe Script", 10);              
+                this.lblGameOver.Font = new Font("Segoe Script", 10);
                 playBotPlayer2();
             }
             else
@@ -67,16 +68,35 @@ namespace laba6
                 this.lblGameOver.Font = new Font("Segoe Script", 10);
                 this.lblPlayersTurns.Text = "Your turn!";
             }
-            this.btnStartGame.Enabled = false;
-            this.btnStartGame.Visible = false;
+            this.btnPlayCards.Enabled = true;
+            EnableOrDisableSkip();
+            stage = 1;
         }
 
         private int ChoosePlayerWhoStarts()
         {
-            Random rnd = new Random();
-            int playerWhoStarts;
-            playerWhoStarts = rnd.Next(1, 3);
-            return playerWhoStarts;
+            int p2CardIndex = gameAlgo.p2.FindMaxCard();
+            player1.Hand[(int)player1.FirstChosenCard].MoveTo(player1.WeaponCard);
+            player2.Hand[p2CardIndex].MoveTo(player2.WeaponCard);
+            SetTimer(slowerSpeedInMs);
+            player1.WeaponCard.MoveTo(player1.Hand[(int)player1.FirstChosenCard]);
+            player2.WeaponCard.MoveTo(player2.Hand[p2CardIndex]);
+
+            if (gameAlgo.Hand2[p2CardIndex].CardRank > player1.Hand[(int)player1.FirstChosenCard].GetCard.CardRank)
+            {
+                return 2;
+            }
+            else if (gameAlgo.Hand2[p2CardIndex].CardRank < player1.Hand[(int)player1.FirstChosenCard].GetCard.CardRank)
+            {
+                return 1;
+            }
+            else
+            {
+                Random rnd = new Random();
+                int playerWhoStarts;
+                playerWhoStarts = rnd.Next(1, 3);
+                return playerWhoStarts;
+            }
         }
         private void InintResults()
         {
@@ -88,10 +108,26 @@ namespace laba6
         {
             Application.Exit();
         }
+        private void EnableOrDisableSkip()
+        {
+            if (NeedToEnableSkipMove())
+                this.btnSkipMove.Enabled = true;
+            else
+                this.btnSkipMove.Enabled = false;
+        }
         private bool NeedToEnableSkipMove()
         {
-            //if()
-            return true;
+            if(player2.WeaponCard.IsEmpty)//if player 1 should make next move (create bot)
+            {
+                if (!gameAlgo.p1.hasWeapon() || !gameAlgo.p1.hasArmour())
+                    return true;
+            }
+            else
+            {
+                if(!gameAlgo.p1.CanBeatBot(player2.ArmourCard.GetCard) || !gameAlgo.p1.hasWeapon())
+                    return true;
+            }
+            return false;
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -166,65 +202,70 @@ namespace laba6
         
         private void btnPlayCards_Click(object sender, EventArgs e)
         {
-            if (player1.ChosenArmourCardIndex != null && player1.ChosenWeaponCardIndex != null)
+            if (stage == 0)
             {
-                this.btnPlayCards.Enabled = false;
-                if (player2.WeaponCard.IsEmpty)//deciding play or beat bot
+                if(player1.FirstChosenCard != null)
                 {
-                    player1.PlayBot();
-                    this.lblPlayersTurns.Text = "";
-                    gameAlgo.AcceptMove(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
-                    //
-                    player1.UnchooseAllCards();
-                    int? armourIndex, weaponIndex;
-                    
-                    if (gameAlgo.MakeMove(out weaponIndex, out armourIndex))
-                    {
-                        //a-i beats
-                        player2.ChosenArmourCardIndex = armourIndex;
-                        player2.ChosenWeaponCardIndex = weaponIndex;
-                        SetTimer(fasterSpeedInMs);
-                        player2.PlayBot();
-                        //відбій
-                        VisualizeCardsAfterBattle();
-                        //a-i moves forward
-                        playBotPlayer2();
-                        //gameAlgo.CreateBot();
-                        //gameAlgo.MakeMove(out weaponIndex, out armourIndex);
-                        //player2.ChosenArmourCardIndex = armourIndex;
-                        //player2.ChosenWeaponCardIndex = weaponIndex;
-                        //SetTimer(fasterSpeedInMs);
-                        //player2.PlayBot();
-                        //RefreshScores();
-                    }
-                    else
-                    {                        
-                        gameAlgo.NewRound();
-                        NewRound();                       
-                    }
-                    this.btnPlayCards.Enabled = true;
-                    this.lblPlayersTurns.Text = "Your turn!";
-                   
+                    StartGame();
                 }
                 else
-                {
-                    if(player1.BeatBot(player2.ArmourCard.GetCard))
-                    {
-                        gameAlgo.AcceptResponse(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
-                        //відбій
-                        VisualizeCardsAfterBattle();
-                        RefreshScores();
-                    }
-                    else
-                    {
-                        
-                    }
-                    this.btnPlayCards.Enabled = true;
-                }                
+                    MessageBox.Show("You haven't chosen card!");
             }
             else
             {
-                MessageBox.Show("You haven't chosen cards!");
+                if (player1.ChosenArmourCardIndex != null && player1.ChosenWeaponCardIndex != null)
+                {
+                    this.btnPlayCards.Enabled = false;
+                    if (player2.WeaponCard.IsEmpty)//deciding play or beat bot
+                    {
+                        player1.PlayBot();
+                        this.lblPlayersTurns.Text = "";
+                        gameAlgo.AcceptMove(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
+                        //
+                        player1.UnchooseAllCards();
+                        int? armourIndex, weaponIndex;
+
+                        if (gameAlgo.MakeMove(out weaponIndex, out armourIndex))
+                        {
+                            //a-i beats
+                            player2.ChosenArmourCardIndex = armourIndex;
+                            player2.ChosenWeaponCardIndex = weaponIndex;
+                            SetTimer(fasterSpeedInMs);
+                            player2.PlayBot();
+                            //відбій
+                            VisualizeCardsAfterBattle();
+                            //a-i moves forward
+                            playBotPlayer2();
+                        }
+                        else
+                        {
+                            gameAlgo.NewRound();
+                            NewRound();
+                        }
+                        this.btnPlayCards.Enabled = true;
+                        this.lblPlayersTurns.Text = "Your turn!";
+                    }
+                    else
+                    {
+                        if (player1.BeatBot(player2.ArmourCard.GetCard))
+                        {
+                            gameAlgo.AcceptResponse(player1.ChosenWeaponCardIndex, player1.ChosenArmourCardIndex);
+                            //відбій
+                            VisualizeCardsAfterBattle();
+                            RefreshScores();
+                        }
+                        else
+                        {
+
+                        }
+                        this.btnPlayCards.Enabled = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You haven't chosen cards!");
+                }
+                EnableOrDisableSkip();
             }
         }
         private void playBotPlayer2()
@@ -241,8 +282,10 @@ namespace laba6
                 player2.PlayBot();
             }          
             RefreshScores();
+            EnableOrDisableSkip();//
             this.btnPlayCards.Enabled = true;
             this.lblPlayersTurns.Text = "Your turn!";
+            EnableOrDisableSkip();
         }
         private void VisualizeCardsAfterBattle()
         {
@@ -272,8 +315,7 @@ namespace laba6
                     player2.Hand[i].AddCard(gameAlgo.Hand2[i]);
                     player2.Hand[i].FaceUp();//FaceDown
                 }
-            }
-            
+            }            
         }
         private void RenewCardsForNewRound()
         {
@@ -300,6 +342,7 @@ namespace laba6
             }
             SetTimer(slowerSpeedInMs);
             RenewCardsForNewRound();
+            EnableOrDisableSkip();
         }
         private void btnSkipMove_Click(object sender, EventArgs e)
         {
@@ -310,7 +353,6 @@ namespace laba6
             NewRound();
 
             int? armourIndex, weaponIndex;
-            
             gameAlgo.CreateBot();
             gameAlgo.MakeMove(out weaponIndex, out armourIndex);
             player2.ChosenArmourCardIndex = armourIndex;
@@ -322,43 +364,73 @@ namespace laba6
         }
         private void hand1_card1_Click(object sender, EventArgs e)
         {
-            player1.ChooseCard(0);
+            if (stage == 0)
+                player1.ChooseFirstCard(0);
+            else
+                player1.ChooseCard(0);
         }
         private void hand1_card2_Click(object sender, EventArgs e)
         {
-            player1.ChooseCard(1);
+            if (stage == 0)
+                player1.ChooseFirstCard(1);
+            else
+                player1.ChooseCard(1);
         }
         private void hand1_card3_Click(object sender, EventArgs e)
         {
-            player1.ChooseCard(2);
+            if (stage == 0)
+                player1.ChooseFirstCard(2);
+            else
+                player1.ChooseCard(2);
         }
         private void hand1_card4_Click(object sender, EventArgs e)
         {
-            player1.ChooseCard(3);
+            if (stage == 0)
+                player1.ChooseFirstCard(3);
+            else
+                player1.ChooseCard(3);
         }
         private void hand1_card5_Click(object sender, EventArgs e)
         {
-            player1.ChooseCard(4);
+            if (stage == 0)
+                player1.ChooseFirstCard(4);
+            else
+                player1.ChooseCard(4);
         }
         private void hand1_card6_Click(object sender, EventArgs e)
         {
-           player1.ChooseCard(5);
+            if (stage == 0)
+                player1.ChooseFirstCard(5);
+            else
+                player1.ChooseCard(5);
         }
         private void pictureBox8_Click(object sender, EventArgs e)
         {
-            player1.ChooseCard(6);
+            if (stage == 0)
+                player1.ChooseFirstCard(6);
+            else
+                player1.ChooseCard(6);
         }
         private void hand1_card8_Click(object sender, EventArgs e)
         {
-            player1.ChooseCard(7);
+            if (stage == 0)
+                player1.ChooseFirstCard(7);
+            else
+                player1.ChooseCard(7);
         }
         private void hand1_card9_Click(object sender, EventArgs e)
         {
-            player1.ChooseCard(8);
+            if (stage == 0)
+                player1.ChooseFirstCard(8);
+            else
+                player1.ChooseCard(8);
         }
         private void hand1_card10_Click(object sender, EventArgs e)
         {
-            player1.ChooseCard(9);
+            if (stage == 0)
+                player1.ChooseFirstCard(9);
+            else
+                player1.ChooseCard(9);
         }
 
         private void hand2_card3_Click(object sender, EventArgs e)
@@ -385,8 +457,6 @@ namespace laba6
             gameTimer.Stop();
             // Stops the timer.
             exitFlag = true;
-        }
-
-       
+        }               
     }
 }

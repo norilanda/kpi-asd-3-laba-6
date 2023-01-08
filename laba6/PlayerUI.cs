@@ -15,6 +15,7 @@ namespace laba6
 
         private int? _chosenWeaponCardIndex;
         private int? _chosenArmourCardIndex;
+        private int? _firstChosenCard;// when deciding who will make the first move
         private int _score;
 
         //getters/setters
@@ -40,6 +41,11 @@ namespace laba6
             get { return _chosenArmourCardIndex;}
             set { _chosenArmourCardIndex = value;}
         }
+        public int? FirstChosenCard
+        {
+            get { return _firstChosenCard;}
+            set { _firstChosenCard = value; }
+        }
         public int Score
         {
             get { return _score; }
@@ -51,6 +57,25 @@ namespace laba6
         {
             this._hand = hand;
             _score = 0;
+        }
+        public void ChooseFirstCard(int cardIndex)
+        {
+            if(_firstChosenCard != null)
+            {
+                _hand[(int)_firstChosenCard].MarkUnchosen();
+                if(_firstChosenCard == cardIndex)
+                    _firstChosenCard = null;
+                else
+                {
+                    _firstChosenCard = cardIndex;
+                    _hand[(int)_firstChosenCard].MarkChosen();
+                }
+            }
+            else
+            {
+                _firstChosenCard = cardIndex;
+                _hand[(int)_firstChosenCard].MarkChosen();
+            }
         }
         public void ChooseCard(int cardIndex)
         {

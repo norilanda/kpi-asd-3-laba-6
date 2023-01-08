@@ -9,7 +9,7 @@ namespace GameAlgo
     public class GameAlgorithm
     {
         public const int CARDS_IN_HAND = 10;
-        public const int BOT_NUMBER_TO_WIN = 2;
+        public const int BOT_NUMBER_TO_WIN = 5;
         public enum Mode
         {
             Easy,
@@ -25,6 +25,8 @@ namespace GameAlgo
 
         public List<Card?> Hand1 => player1.Hand;
         public List<Card?> Hand2 => player2.Hand;
+        public Player p1 => player1;
+        public Player p2 => player2;
         public int Score1 => player1.Score;
         public int Score2 => player2.Score;
         public bool IsDeckEmpty() => deck.Count == 0;
