@@ -81,6 +81,7 @@ namespace laba6
             SetTimer(slowerSpeedInMs);
             player1.WeaponCard.MoveTo(player1.Hand[(int)player1.FirstChosenCard]);
             player2.WeaponCard.MoveTo(player2.Hand[p2CardIndex]);
+            player2.Hand[p2CardIndex].FaceDown();
 
             if (gameAlgo.Hand2[p2CardIndex].CardRank > player1.Hand[(int)player1.FirstChosenCard].GetCard.CardRank)
             {
@@ -142,7 +143,7 @@ namespace laba6
             for(int i=0;i< GameAlgorithm.CARDS_IN_HAND; i++)
             {
                 player1.Hand[i].FaceUp();
-                player2.Hand[i].FaceUp();    //  FaceDown          
+                player2.Hand[i].FaceDown();    //  FaceDown          
             }
         }
         private void InitializeCardsUI()
@@ -313,7 +314,7 @@ namespace laba6
                 if (player2.Hand[i].IsEmpty)
                 {
                     player2.Hand[i].AddCard(gameAlgo.Hand2[i]);
-                    player2.Hand[i].FaceUp();//FaceDown
+                    player2.Hand[i].FaceDown();//FaceDown
                 }
             }            
         }
@@ -325,7 +326,7 @@ namespace laba6
                 player1.Hand[i].FaceUp();
                 
                 player2.Hand[i].AddCard(gameAlgo.Hand2[i]);
-                player2.Hand[i].FaceUp();//FaceDown                
+                player2.Hand[i].FaceDown();//FaceDown                
             }            
         }
         private void NewRound()

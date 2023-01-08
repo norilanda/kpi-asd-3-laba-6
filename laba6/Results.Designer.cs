@@ -43,9 +43,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe Script", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(449, 241);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(316, 58);
+            this.label1.Size = new System.Drawing.Size(233, 58);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Player 1 score:";
+            this.label1.Text = "Your score:";
             // 
             // label2
             // 

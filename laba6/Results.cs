@@ -29,7 +29,7 @@ namespace laba6
         void DisplayResults(int score1, int score2, int RoundNumber)
         {
             if (score1 > score2)
-                this.lblPlayerWins.Text = "Player 1 wins!";
+                this.lblPlayerWins.Text = "You win!";
             else
                 this.lblPlayerWins.Text = "Player 2 wins!";
             this.lblScore1.Text = Convert.ToString(score1);
